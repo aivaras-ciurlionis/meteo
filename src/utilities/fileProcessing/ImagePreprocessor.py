@@ -8,13 +8,25 @@ class ImagePreprocessor:
     imagesFolder = ''
     resizedImageDimension = 128
     maxImagesPerSequence = 10000
+    skipImageCount = 0
+    startDate = None
+    endDate = None
 
     def set_images_folder(self, folder):
         self.imagesFolder = folder
         return self
 
+    def set_date_range(self, start_date, end_date):
+        self.startDate = start_date
+        self.endDate = end_date
+        return self
+
     def set_max_images_per_sequence(self, max_images):
         self.maxImagesPerSequence = max_images
+        return self
+
+    def set_skip_count(self, skip):
+        self.skipImageCount = skip
         return self
 
     def set_resized_image_dimension(self, value):
@@ -28,7 +40,10 @@ class ImagePreprocessor:
         converter = PixelsRainStrengthConverter()
 
         prepared_sequences = []
-        image_sequences = sequences_loader.select_folder(self.imagesFolder).load_sequences()
+        image_sequences = sequences_loader\
+            .select_folder(self.imagesFolder)\
+            .set_date_range(self.startDate, self.endDate)\
+            .load_sequences()
 
         for sequence in image_sequences:
             sequence_images = image_loader\
@@ -41,7 +56,7 @@ class ImagePreprocessor:
                 .set_images(sequence_images)\
                 .resize_images((self.resizedImageDimension, self.resizedImageDimension))
 
-            converted_images = converter.convert_images(sequence_images)
+            converted_images = converter.convert_images(sequence_images[self.skipImageCount:])
             prepared_sequences.append(converted_images)
 
         return prepared_sequences

@@ -4,10 +4,17 @@ import arrow
 
 class ImageSequencesLoader:
     srcFolder = ''
+    startDate = None
+    endDate = None
     DATE_FORMAT = 'YYYY-MM-DD--HH-mm-ss'
 
     def select_folder(self, folder_name):
         self.srcFolder = folder_name
+        return self
+
+    def set_date_range(self, start_date, end_date):
+        self.startDate = arrow.get(start_date)
+        self.endDate = arrow.get(end_date)
         return self
 
     def load_sequences(self):
@@ -24,8 +31,22 @@ class ImageSequencesLoader:
             if image_date == date:
                 new_sequence.append(file_name)
             else:
-                sequences.append(new_sequence.copy())
+                filtered_files = self.filter_dates(new_sequence.copy())
+                if len(filtered_files) > 0:
+                    sequences.append(filtered_files)
                 new_sequence = [file_name]
                 date = arrow.get(file_name, self.DATE_FORMAT)
-        sequences.append(new_sequence)
+        sequences.append(self.filter_dates(new_sequence))
+        print(sequences)
         return sequences
+
+    def filter_dates(self, files):
+        if self.startDate is None or self.endDate is None:
+            return files
+        filtered = []
+        for file in files:
+            image_date_name = os.path.splitext(file)[0]
+            image_date = arrow.get(image_date_name, self.DATE_FORMAT)
+            if self.startDate < image_date < self.endDate:
+                filtered.append(file)
+        return filtered
