@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5aa5382a-d7b9-4f5b-a870-4047a135d5e5" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/measuring/evaluationProcessor.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/visualisation/evaluationChartDrawer.py" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" afterPath="$PROJECT_DIR$/src/main.py" />
-      <change beforePath="$PROJECT_DIR$/src/predictionAlgorithms/baseAlgorithm.py" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/baseAlgorithm.py" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/fileProcessing/ImagePreprocessor.py" afterPath="$PROJECT_DIR$/src/utilities/fileProcessing/ImagePreprocessor.py" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/fileProcessing/ImageSequencesLoader.py" afterPath="$PROJECT_DIR$/src/utilities/fileProcessing/ImageSequencesLoader.py" />
+      <change beforePath="$PROJECT_DIR$/src/bar.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/line.html" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +22,21 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+            <state relative-caret-position="432">
+              <caret line="24" column="48" lean-forward="true" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,7 +83,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="baseAlgorithm.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="baseAlgorithm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/baseAlgorithm.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="18">
@@ -92,18 +99,6 @@
             <state relative-caret-position="236">
               <caret line="39" column="24" lean-forward="false" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="accuracyEvaluator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/measuring/accuracyEvaluator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="51" column="44" lean-forward="false" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
-              <folding>
-                <element signature="e#0#83#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -167,6 +162,7 @@
         <option value="$PROJECT_DIR$/src/visualisation/evaluationChartDrawer.py" />
         <option value="$PROJECT_DIR$/src/main.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/baseAlgorithm.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -535,20 +531,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/baseAlgorithm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+        <state relative-caret-position="432">
+          <caret line="24" column="48" lean-forward="true" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/baseAlgorithm.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
           <folding />
         </state>
       </provider>
