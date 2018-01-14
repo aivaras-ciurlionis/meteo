@@ -16,6 +16,10 @@ class AccuracyEvaluator:
         self.predictedImagesCount = count
         return self
 
+    def set_source_images_count(self, count):
+        self.predictionSourceImagesCount = count
+        return self
+
     def set_prediction_algorithm(self, algorithm):
         self.predictionAlgorithm = algorithm
         return self
@@ -30,7 +34,7 @@ class AccuracyEvaluator:
         sequence_accuracy = []
         for index in range(sequence_start, sequence_end):
             generated_images = self.predictionAlgorithm\
-                .predict(sequence[index:index+self.predictionSourceImagesCount], self.predictedImagesCount)
+                .predict(sequence[index+1-self.predictionSourceImagesCount:index+1], self.predictedImagesCount)
             part_accuracy = self\
                 .evaluate_part_accuracy(sequence[index+1:index+1+self.predictedImagesCount], generated_images)
             sequence_accuracy.append(part_accuracy)
