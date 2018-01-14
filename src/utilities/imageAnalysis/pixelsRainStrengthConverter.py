@@ -41,5 +41,5 @@ class PixelsRainStrengthConverter:
     def normalise_image(image):
         data = image.getdata()
         strength_list = list(map(lambda p: p / 255, data))
-        image.close()
+        #image.close()
         return strength_list

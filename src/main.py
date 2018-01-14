@@ -1,22 +1,20 @@
-from src.utilities.fileProcessing.ImageSequencesLoader import ImageSequencesLoader
-from src.utilities.fileProcessing.ImageLoader import ImageLoader
-from src.utilities.imageAnalysis.pixelsRainStrengthConverter import PixelsRainStrengthConverter
-from src.utilities.imageProcessing.imageResizer import ImageResizer
-from src.utilities.imageAnalysis.imagesMeanSquareError import ImagesMeanSquareError
+from src.measuring.accuracyEvaluator import AccuracyEvaluator
+from src.predictionAlgorithms.correlation.persistencyAlgorithm import PersistencyAlgorithm
+from src.utilities.fileProcessing.ImagePreprocessor import ImagePreprocessor
 
-sequencesLoader = ImageSequencesLoader()
-imageLoader = ImageLoader()
-imageResizer = ImageResizer()
-converter = PixelsRainStrengthConverter()
-mse = ImagesMeanSquareError()
+image_preprocessor = ImagePreprocessor()
+evaluator = AccuracyEvaluator()
 
-imageSequences = sequencesLoader.select_folder('../pics').load_sequences()
-images = imageLoader.set_image_folder('../pics').set_sequence(imageSequences[0]).load_sequence_images()
-test_images = images[0:10]
-imageResizer.set_images(test_images).resize_images((256, 256))
-converted_images = converter.convert_images(test_images)
+sequences = image_preprocessor\
+    .set_images_folder('../pics')\
+    .set_resized_image_dimension(128)\
+    .set_max_images_per_sequence(50)\
+    .load_and_process_images()
 
-normalisedImage1 = converter.normalise_image(converted_images[0])
-for i in range(1, 10):
-    normalisedImage = converter.normalise_image(converted_images[i])
-    print(mse.get_mean_square_error(normalisedImage1, normalisedImage))
+evaluation_result = evaluator\
+    .set_image_sequences(sequences)\
+    .set_predicted_images_count(8)\
+    .set_prediction_algorithm(PersistencyAlgorithm())\
+    .evaluate()
+
+print(evaluation_result[0][1])
