@@ -2,6 +2,7 @@ from src.predictionAlgorithms.baseAlgorithm import BaseAlgorithm
 
 
 class PersistencyAlgorithm(BaseAlgorithm):
+    name = 'Persistency'
 
     def predict(self, source_images, count):
         predictions = []

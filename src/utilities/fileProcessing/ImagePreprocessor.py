@@ -8,7 +8,6 @@ class ImagePreprocessor:
     imagesFolder = ''
     resizedImageDimension = 128
     maxImagesPerSequence = 10000
-    skipImageCount = 0
     startDate = None
     endDate = None
 
@@ -23,10 +22,6 @@ class ImagePreprocessor:
 
     def set_max_images_per_sequence(self, max_images):
         self.maxImagesPerSequence = max_images
-        return self
-
-    def set_skip_count(self, skip):
-        self.skipImageCount = skip
         return self
 
     def set_resized_image_dimension(self, value):
@@ -56,7 +51,7 @@ class ImagePreprocessor:
                 .set_images(sequence_images)\
                 .resize_images((self.resizedImageDimension, self.resizedImageDimension))
 
-            converted_images = converter.convert_images(sequence_images[self.skipImageCount:])
+            converted_images = converter.convert_images(sequence_images)
             prepared_sequences.append(converted_images)
 
         return prepared_sequences

@@ -17,10 +17,10 @@ def offset(image, x, y):
     return i
 
 
-class XYTransformationAlgorithm(BaseTransformationAlgorithm):
-    name = 'XY transformation'
+class RotationAlgorithm(BaseTransformationAlgorithm):
+    name = 'Rotation'
+
     transformations = [
-        (lambda image, value: offset(image, value, 0), [-5, 5, 1]),
-        (lambda image, value: offset(image, 0, value), [-5, 5, 1]),
+        (lambda image, value: image.rotate(value), [-10, 10, 1]),
     ]
 

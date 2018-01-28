@@ -38,10 +38,23 @@ class PixelsRainStrengthConverter:
         return converted_image
 
     @staticmethod
+    def convert_gray_strength_to_source(image):
+        converter = PixelToRainStrengthConverter()
+        data = image.copy().getdata()
+        strength_list = list(map(lambda p: int(p/16), data))
+        pixels = list(map(lambda s: converter.convert_to_pixel(s), strength_list))
+        converted_image = Image.new('RGB', image.size)
+        converted_image.putdata(pixels)
+        return converted_image
+
+    @staticmethod
     def normalise_image(image):
         s = image.size[0]
         crop_amount = int(s*0.10)
         data = image.copy().crop((crop_amount, crop_amount, s-crop_amount, s-crop_amount)).getdata()
         strength_list = list(map(lambda p: p / 255, data))
-        #image.close()
         return strength_list
+
+    @staticmethod
+    def get_normalised_accuracy_in(image, point):
+        return image.getpixel(point) / 255

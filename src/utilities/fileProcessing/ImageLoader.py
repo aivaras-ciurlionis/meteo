@@ -27,4 +27,5 @@ class ImageLoader:
             image_location = path.join(self.imagesFolder, image_name)
             image = Image.open(image_location)
             images.append(image)
+            print(image.filename)
         return images

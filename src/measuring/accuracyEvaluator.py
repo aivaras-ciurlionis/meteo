@@ -1,5 +1,4 @@
-from src.utilities.imageAnalysis.imagesMeanSquareError import ImagesMeanSquareError
-from src.utilities.imageAnalysis.pixelsRainStrengthConverter import PixelsRainStrengthConverter
+from src.measuring.partAccuracyEvaluator import PartAccuracyEvaluator
 
 
 class AccuracyEvaluator:
@@ -7,9 +6,19 @@ class AccuracyEvaluator:
     predictionSourceImagesCount = 1
     predictedImagesCount = 4
     predictionAlgorithm = None
+    measuringType = 'image'
+    measuringPoint = (0, 0)
+
+    def set_measuring_point(self, point):
+        self.measuringPoint = point
+        return self
 
     def set_image_sequences(self, sequences):
         self.imageSequences = sequences
+        return self
+
+    def set_measuring_type(self, measure_type):
+        self.measuringType = measure_type
         return self
 
     def set_predicted_images_count(self, count):
@@ -35,21 +44,21 @@ class AccuracyEvaluator:
         for index in range(sequence_start, sequence_end):
             generated_images = self.predictionAlgorithm\
                 .predict(sequence[index+1-self.predictionSourceImagesCount:index+1], self.predictedImagesCount)
-            part_accuracy = self\
-                .evaluate_part_accuracy(sequence[index+1:index+1+self.predictedImagesCount], generated_images)
+            actual_img = sequence[index + 1:index + 1 + self.predictedImagesCount]
+            if self.measuringType == 'image':
+                part_accuracy = self.evaluate_part_accuracy(actual_img, generated_images)
+            else:
+                part_accuracy = self.evaluate_part_accuracy_in_point(actual_img, generated_images, self.measuringPoint)
             sequence_accuracy.append(part_accuracy)
-
         return sequence_accuracy
 
     @staticmethod
+    def evaluate_part_accuracy_in_point(actual_images, generated_images, point):
+        return PartAccuracyEvaluator.evaluate_part_accuracy_in_point(actual_images, generated_images, point)
+
+    @staticmethod
     def evaluate_part_accuracy(actual_images, generated_images):
-        accuracies = []
-        for index, image in enumerate(actual_images):
-            normalised_generated = PixelsRainStrengthConverter.normalise_image(generated_images[index])
-            normalised_actual = PixelsRainStrengthConverter.normalise_image(image)
-            error = ImagesMeanSquareError.get_mean_square_error(normalised_generated, normalised_actual)
-            accuracies.append(error)
-        return accuracies
+        return PartAccuracyEvaluator.evaluate_part_accuracy(actual_images, generated_images)
 
     def evaluate(self):
         overall_accuracy = []

@@ -47,6 +47,6 @@ class ImageSequencesLoader:
         for file in files:
             image_date_name = os.path.splitext(file)[0]
             image_date = arrow.get(image_date_name, self.DATE_FORMAT)
-            if self.startDate < image_date < self.endDate:
+            if self.startDate <= image_date <= self.endDate:
                 filtered.append(file)
         return filtered
