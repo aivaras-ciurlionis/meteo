@@ -6,9 +6,10 @@ class MultiImageStepTransformation(BaseTransformation):
     name = 'Multi image fraction'
     source_count = 4
 
-    def __init__(self, transformation_algorithm):
+    def __init__(self, transformation_algorithm, source_count=4):
         self.name += ' ' + transformation_algorithm[0]
         self.transformations = transformation_algorithm[1]
+        self.source_count = source_count
         super().__init__(transformation_algorithm)
 
     def predict(self, source_images, count):
@@ -46,6 +47,3 @@ class MultiImageStepTransformation(BaseTransformation):
                 working_image = algorithm(working_image, int(best_movement_vector[i] * self.source_count))
             generated_images.append(working_image.resize(original_size))
         return generated_images
-
-
-

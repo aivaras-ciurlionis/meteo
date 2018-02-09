@@ -24,9 +24,9 @@ class BaseTransformation(BaseAlgorithm):
         return self\
             .find_vector_recursive(source_images, working_image, evaluation_image, 0, 100, base_vector)
 
-    def find_vector_recursive(self, images, working_image, evaluation_image, index, best_error, current_vector):
+    def find_vector_recursive(self, images, working_image, evaluation_image, index, best_error, best_vector):
         if index >= len(self.transformations):
-            return current_vector
+            return best_vector
 
         value = self.transformations[index][1][0]
         end = self.transformations[index][1][1]
@@ -36,17 +36,17 @@ class BaseTransformation(BaseAlgorithm):
         algorithm = self.transformations[index][0]
         working_image = algorithm(working_image, value)
         while value < end:
-            current_vector = self\
-                .find_vector_recursive(images, working_image.copy(), evaluation_image, index + 1, best_error, current_vector)
+            best_vector = self\
+                .find_vector_recursive(images, working_image.copy(), evaluation_image, index + 1, best_error, best_vector)
             working_image = algorithm(working_image, step)
-            value += step
             image1 = PixelsRainStrengthConverter.normalise_image(working_image)
             image2 = PixelsRainStrengthConverter.normalise_image(evaluation_image)
             error = ImagesMeanSquareError.get_mean_square_error(image1, image2)
+            value += step
             if error < best_error:
-                current_vector[index] = value
+                best_vector[index] = value
                 best_error = error
-        return current_vector
+        return best_vector
 
     def generate_images(self, images, best_movement_vector, count):
         generated_images = []

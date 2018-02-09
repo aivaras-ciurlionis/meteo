@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5aa5382a-d7b9-4f5b-a870-4047a135d5e5" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/measuring/multiAlgorithmAccuracyEvaluator.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/multiImageStepTransformation.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/transformations.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/sequenceCorelation/multiImageSequenceTransformation.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main.py" afterPath="$PROJECT_DIR$/src/main.py" />
-      <change beforePath="$PROJECT_DIR$/src/measuring/accuracyEvaluator.py" afterPath="$PROJECT_DIR$/src/measuring/accuracyEvaluator.py" />
-      <change beforePath="$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformationAlgorithm.py" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformation.py" />
-      <change beforePath="$PROJECT_DIR$/src/predictionAlgorithms/correlation/rotationAlgorithm.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/predictionAlgorithms/correlation/xyRotationAlgorithm.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/predictionAlgorithms/correlation/xyTransformationAlgorithm.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/imageAnalysis/imagesMeanSquareError.py" afterPath="$PROJECT_DIR$/src/utilities/imageAnalysis/imagesMeanSquareError.py" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/imageAnalysis/pixelToRainStrengthConverter.py" afterPath="$PROJECT_DIR$/src/utilities/imageAnalysis/pixelToRainStrengthConverter.py" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/imageAnalysis/pixelsRainStrengthConverter.py" afterPath="$PROJECT_DIR$/src/utilities/imageAnalysis/pixelsRainStrengthConverter.py" />
-      <change beforePath="$PROJECT_DIR$/src/visualisation/comparisonChartDrawer.py" afterPath="$PROJECT_DIR$/src/visualisation/comparisonChartDrawer.py" />
+      <change beforePath="$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformation.py" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformation.py" />
+      <change beforePath="$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/multiImageStepTransformation.py" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/multiImageStepTransformation.py" />
+      <change beforePath="$PROJECT_DIR$/src/predictionAlgorithms/transformations.py" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/transformations.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,17 +17,29 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/meteo$main.coverage" NAME="main Coverage Results" MODIFIED="1518183759387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/meteo$main.coverage" NAME="main Coverage Results" MODIFIED="1518190849876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state relative-caret-position="128">
+              <caret line="24" column="60" lean-forward="false" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="multiImageSequenceTransformation.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/sequenceCorelation/multiImageSequenceTransformation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1062">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,8 +48,18 @@
       <file leaf-file-name="multiImageStepTransformation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/multiImageStepTransformation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="44" lean-forward="true" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+            <state relative-caret-position="2">
+              <caret line="23" column="39" lean-forward="false" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="transformations.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/transformations.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="34" column="66" lean-forward="false" selection-start-line="34" selection-start-column="66" selection-end-line="34" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -54,8 +68,8 @@
       <file leaf-file-name="baseTransformation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+            <state relative-caret-position="182">
+              <caret line="43" column="79" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -65,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/baseAlgorithm.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="36">
-              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -142,12 +156,14 @@
         <option value="$PROJECT_DIR$/src/measuring/multiAlgorithmAccuracyEvaluator.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/xyFractionTransformationAlgorithm.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/xyRotationFractionTransformationAlgorithm.py" />
-        <option value="$PROJECT_DIR$/src/predictionAlgorithms/transformations.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformationAlgorithm.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/baseAlgorithm.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/baseFractionCorelationAlgorithm.py" />
-        <option value="$PROJECT_DIR$/src/main.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformation.py" />
+        <option value="$PROJECT_DIR$/src/predictionAlgorithms/sequenceCorelation/multiImageSequenceTransformation.py" />
+        <option value="$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/multiImageStepTransformation.py" />
+        <option value="$PROJECT_DIR$/src/main.py" />
+        <option value="$PROJECT_DIR$/src/predictionAlgorithms/transformations.py" />
       </list>
     </option>
   </component>
@@ -157,11 +173,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1747" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-66" />
     <option name="y" value="-4" />
-    <option name="width" value="1366" />
-    <option name="height" value="709" />
+    <option name="width" value="1364" />
+    <option name="height" value="701" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -196,6 +212,27 @@
               <item name="meteo" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="predictionAlgorithms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="meteo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="meteo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="predictionAlgorithms" type="462c0819:PsiDirectoryNode" />
+              <item name="correlation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="meteo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="meteo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="predictionAlgorithms" type="462c0819:PsiDirectoryNode" />
+              <item name="fractionCorelation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="meteo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="meteo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="predictionAlgorithms" type="462c0819:PsiDirectoryNode" />
+              <item name="sequenceCorelation" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -287,16 +324,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1747" y="-4" width="1922" height="1029" extended-state="6" />
+    <frame x="0" y="-4" width="1366" height="709" extended-state="7" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2171875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="291" height="509" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2171875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="291" height="509" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30819672" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46766168" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21354167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3001464" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -354,13 +391,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/utilities/imageAnalysis/imagesMeanSquareError.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="27" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/measuring/accuracyEvaluator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="774">
@@ -675,22 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/persistencyAlgorithm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/transformations.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/rotationAlgorithm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -699,37 +713,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/baseAlgorithm.py">
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="182">
+          <caret line="43" column="79" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="79" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/multiImageStepTransformation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="44" lean-forward="true" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+        <state relative-caret-position="2">
+          <caret line="23" column="39" lean-forward="false" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformation.py">
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/persistencyAlgorithm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        <state relative-caret-position="90">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/baseAlgorithm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/sequenceCorelation/multiImageSequenceTransformation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1062">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="128">
+          <caret line="24" column="60" lean-forward="false" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/transformations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="34" column="66" lean-forward="false" selection-start-line="34" selection-start-column="66" selection-end-line="34" selection-end-column="66" />
+          <folding />
         </state>
       </provider>
     </entry>
