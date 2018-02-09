@@ -4,25 +4,20 @@ import plotly.graph_objs as go
 
 
 class ComparisonChartDrawer:
-    result1 = None
-    result2 = None
-    result3 = None
+    results = []
+    names = []
 
-    def set_evaluation_results(self, r1, r2, r3=None):
+    def set_names(self, names):
+        self.names = names
+        return self
+
+    def set_evaluation_results(self, results):
         evaluation_processor = EvaluationProcessor()
-
-        self.result1 = evaluation_processor\
-            .set_evaluation_results(r1)\
-            .get_sequence_prediction_averages()[0]
-
-        self.result2 = evaluation_processor \
-            .set_evaluation_results(r2) \
-            .get_sequence_prediction_averages()[0]
-
-        # self.result3 = evaluation_processor \
-        #     .set_evaluation_results(r3) \
-        #     .get_sequence_prediction_averages()[0]
-
+        for result in results:
+            eval_result = evaluation_processor\
+             .set_evaluation_results(result)\
+             .get_sequence_prediction_averages()[0]
+            self.results.append(eval_result)
         return self
 
     @staticmethod
@@ -30,17 +25,14 @@ class ComparisonChartDrawer:
         return ["%d:%02d" % divmod((x+1)*15, 60) for x in range(data_length)]
 
     def draw_line_chart(self):
-        data_length = len(self.result1)
-        data = [
-            go.Scatter(
-                x=self.get_x_axis(data_length),
-                y=self.result1,
-                name='Persistency'
-            ),
-            go.Scatter(
-                x=self.get_x_axis(data_length),
-                y=self.result2,
-                name='XY'
+        data_length = len(self.results[0])
+        data = []
+        for i, result in enumerate(self.results):
+            data.append(
+                go.Scatter(
+                    x=self.get_x_axis(data_length),
+                    y=result,
+                    name=self.names[i]
+                )
             )
-        ]
         py.plot(data, filename='line.html')

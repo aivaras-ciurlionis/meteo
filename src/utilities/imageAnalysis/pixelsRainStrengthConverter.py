@@ -43,7 +43,7 @@ class PixelsRainStrengthConverter:
         data = image.copy().getdata()
         strength_list = list(map(lambda p: int(p/16), data))
         pixels = list(map(lambda s: converter.convert_to_pixel(s), strength_list))
-        converted_image = Image.new('RGB', image.size)
+        converted_image = Image.new('RGBA', image.size)
         converted_image.putdata(pixels)
         return converted_image
 

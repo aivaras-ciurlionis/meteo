@@ -8,6 +8,11 @@ class AccuracyEvaluator:
     predictionAlgorithm = None
     measuringType = 'image'
     measuringPoint = (0, 0)
+    rangeStep = 1
+
+    def set_range_step(self, step):
+        self.rangeStep = step
+        return self
 
     def set_measuring_point(self, point):
         self.measuringPoint = point
@@ -41,9 +46,10 @@ class AccuracyEvaluator:
         sequence_start = self.predictionSourceImagesCount - 1
         sequence_end = len(sequence) - self.predictedImagesCount
         sequence_accuracy = []
-        for index in range(sequence_start, sequence_end):
+        for index in range(sequence_start, sequence_end, self.rangeStep):
             generated_images = self.predictionAlgorithm\
                 .predict(sequence[index+1-self.predictionSourceImagesCount:index+1], self.predictedImagesCount)
+            print(index / (sequence_end-sequence_start) * 100);
             actual_img = sequence[index + 1:index + 1 + self.predictedImagesCount]
             if self.measuringType == 'image':
                 part_accuracy = self.evaluate_part_accuracy(actual_img, generated_images)

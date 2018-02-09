@@ -5,19 +5,26 @@ from src.utilities.imageAnalysis.imagesMeanSquareError import ImagesMeanSquareEr
 from src.utilities.imageAnalysis.pixelsRainStrengthConverter import PixelsRainStrengthConverter
 
 
-class BaseTransformationAlgorithm(BaseAlgorithm):
+class BaseTransformation(BaseAlgorithm):
+    name = 'Two frame transform'
     transformations = []
 
+    def __init__(self, transformation_algorithm):
+        self.name += ' ' + transformation_algorithm[0]
+        self.transformations = transformation_algorithm[1]
+        super().__init__()
+
     def predict(self, source_images, count):
-        best_vector = self.find_best_movement_vector(source_images)
+        best_vector = self.find_best_movement_vector(source_images, source_images[-2].copy(), source_images[-1])
         print(best_vector)
         return self.generate_images(source_images, best_vector, count)
 
-    def find_best_movement_vector(self, source_images):
+    def find_best_movement_vector(self, source_images, working_image, evaluation_image):
         base_vector = numpy.zeros(len(self.transformations))
-        return self.find_vector_recursive(source_images, 0, 100, base_vector)
+        return self\
+            .find_vector_recursive(source_images, working_image, evaluation_image, 0, 100, base_vector)
 
-    def find_vector_recursive(self, images, index, best_error, current_vector):
+    def find_vector_recursive(self, images, working_image, evaluation_image, index, best_error, current_vector):
         if index >= len(self.transformations):
             return current_vector
 
@@ -27,11 +34,10 @@ class BaseTransformationAlgorithm(BaseAlgorithm):
         if len(self.transformations[index][1]) > 2:
             step = self.transformations[index][1][2]
         algorithm = self.transformations[index][0]
-        working_image = images[-2].copy()
-        evaluation_image = images[-1]
         working_image = algorithm(working_image, value)
         while value < end:
-            current_vector = self.find_vector_recursive(images, index + 1, best_error, current_vector)
+            current_vector = self\
+                .find_vector_recursive(images, working_image.copy(), evaluation_image, index + 1, best_error, current_vector)
             working_image = algorithm(working_image, step)
             value += step
             image1 = PixelsRainStrengthConverter.normalise_image(working_image)
