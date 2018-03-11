@@ -14,30 +14,34 @@ from src.visualisation.comparisonChartDrawer import ComparisonChartDrawer
 from src.visualisation.evaluationChartDrawer import EvaluationChartDrawer
 from PIL import ImageChops as iC
 
+from src.utilities.errorFunctions import imagesMeanSquareError
+from src.utilities.errorFunctions import trueSkillStatistic
+
 image_preprocessor = ImagePreprocessor()
 evaluator = MultiAlgorithmAccuracyEvaluator()
 evaluation_processor = EvaluationProcessor()
 
 sequences = image_preprocessor\
     .set_images_folder('../pics')\
-    .set_resized_image_dimension(256)\
-    .set_max_images_per_sequence(600)\
+    .set_resized_image_dimension(150)\
+    .set_max_images_per_sequence(500)\
     .set_date_range('2017-10-23 01:15', '2017-10-30 23:00')\
     .load_and_process_images()
 
 result = evaluator\
     .set_image_sequences(sequences)\
-    .set_predicted_images_count(30)\
-    .set_source_images_count(8)\
+    .set_predicted_images_count(16)\
+    .set_source_images_count(4)\
     .set_measuring_point((32,32))\
-    .set_range_step(3)\
+    .set_range_step(20)\
+    .set_error_function(trueSkillStatistic.TrueSkillStatistic())\
     .set_measuring_type('image')\
     .set_prediction_algorithms(
     [
         PersistencyAlgorithm(),
-        BaseTransformation(Transformations.xy_transformation()),
-        MultiImageStepTransformation(Transformations.xy_transformation(), 3),
-        MultiImageSequenceTransformation(Transformations.xy_transformation(), 3)
+        BaseTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic()),
+        MultiImageStepTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic(), 3),
+        MultiImageSequenceTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic(), 4)
     ]
     )\
     .evaluate()
@@ -47,13 +51,13 @@ drawer\
     .set_evaluation_results(result)\
     .set_names(['Persistency', 'XY Transformation', 'XY Step', 'XY Sequence'])\
     .draw_line_chart()
-
+#
 # prediction = MultiAlgorithmPrediction()
 # prediction.set_images_folder('../pics')\
 #     .set_output_dir('../../meteo-angular/src/assets/images')\
-#     .set_predicted_images(20)\
+#     .set_predicted_images(12)\
 #     .set_resize_size(150)\
-#     .set_source_date('2017-10-25 18:45')\
+#     .set_source_date('2017-10-25 18:30')\
 #     .set_algorithms(
 #     [
 #         PersistencyAlgorithm(),
@@ -63,7 +67,7 @@ drawer\
 #         MultiImageStepTransformation(Transformations.xy_transformation()),
 #
 #         MultiImageSequenceTransformation(Transformations.xy_transformation()),
-#         MultiImageSequenceTransformation(Transformations.xy_fraction_transformation())
+#         #MultiImageSequenceTransformation(Transformations.xy_fraction_transformation())
 #     ]
 #     )\
 #     .predict()\

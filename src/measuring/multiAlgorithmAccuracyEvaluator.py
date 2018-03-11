@@ -1,4 +1,5 @@
 from src.measuring.accuracyEvaluator import AccuracyEvaluator
+from src.utilities.errorFunctions import imagesMeanSquareError
 
 
 class MultiAlgorithmAccuracyEvaluator:
@@ -9,9 +10,14 @@ class MultiAlgorithmAccuracyEvaluator:
     measuringType = 'image'
     measuringPoint = (0, 0)
     rangeStep = 1
+    errorFunction = imagesMeanSquareError
 
     def set_image_sequences(self, sequences):
         self.imageSequences = sequences
+        return self
+
+    def set_error_function(self, error_function):
+        self.errorFunction = error_function
         return self
 
     def set_predicted_images_count(self, count):
@@ -48,6 +54,7 @@ class MultiAlgorithmAccuracyEvaluator:
                 .set_source_images_count(self.predictionSourceImagesCount) \
                 .set_measuring_point(self.measuringPoint) \
                 .set_range_step(self.rangeStep) \
+                .set_error_function(self.errorFunction) \
                 .set_measuring_type(self.measuringType) \
                 .set_prediction_algorithm(algorithm) \
                 .evaluate()

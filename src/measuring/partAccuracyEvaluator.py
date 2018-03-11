@@ -1,4 +1,3 @@
-from src.utilities.imageAnalysis.imagesMeanSquareError import ImagesMeanSquareError
 from src.utilities.imageAnalysis.pixelsRainStrengthConverter import PixelsRainStrengthConverter
 
 
@@ -16,11 +15,11 @@ class PartAccuracyEvaluator:
         return accuracies
 
     @staticmethod
-    def evaluate_part_accuracy(actual_images, generated_images):
+    def evaluate_part_accuracy(actual_images, generated_images, error_function):
         accuracies = []
         for index, image in enumerate(actual_images):
             normalised_generated = PixelsRainStrengthConverter.normalise_image(generated_images[index])
             normalised_actual = PixelsRainStrengthConverter.normalise_image(image)
-            error = ImagesMeanSquareError.get_mean_square_error(normalised_generated, normalised_actual)
+            error = error_function.get_error(normalised_generated, normalised_actual)
             accuracies.append(error)
         return accuracies

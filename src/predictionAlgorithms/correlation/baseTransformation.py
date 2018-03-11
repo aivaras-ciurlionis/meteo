@@ -6,12 +6,14 @@ from src.utilities.imageAnalysis.pixelsRainStrengthConverter import PixelsRainSt
 
 
 class BaseTransformation(BaseAlgorithm):
-    name = 'Two frame transform'
+    baseName = 'Two frame transform'
     transformations = []
+    errorFunction = None
 
-    def __init__(self, transformation_algorithm):
-        self.name += ' ' + transformation_algorithm[0]
+    def __init__(self, transformation_algorithm, error_function):
+        self.name += self.baseName + ' ' + transformation_algorithm[0]
         self.transformations = transformation_algorithm[1]
+        self.errorFunction = error_function
         super().__init__()
 
     def predict(self, source_images, count):
@@ -22,11 +24,11 @@ class BaseTransformation(BaseAlgorithm):
     def find_best_movement_vector(self, source_images, working_image, evaluation_image):
         base_vector = numpy.zeros(len(self.transformations))
         return self\
-            .find_vector_recursive(source_images, working_image, evaluation_image, 0, 100, base_vector)
+            .find_vector_recursive(source_images, working_image, evaluation_image, 0, -100, base_vector)[0]
 
     def find_vector_recursive(self, images, working_image, evaluation_image, index, best_error, best_vector):
         if index >= len(self.transformations):
-            return best_vector
+            return best_vector, best_error
 
         value = self.transformations[index][1][0]
         end = self.transformations[index][1][1]
@@ -36,17 +38,21 @@ class BaseTransformation(BaseAlgorithm):
         algorithm = self.transformations[index][0]
         working_image = algorithm(working_image, value)
         while value < end:
-            best_vector = self\
+            result = self\
                 .find_vector_recursive(images, working_image.copy(), evaluation_image, index + 1, best_error, best_vector)
+            best_vector = result[0]
+            best_error = result[1]
+
+
             working_image = algorithm(working_image, step)
             image1 = PixelsRainStrengthConverter.normalise_image(working_image)
             image2 = PixelsRainStrengthConverter.normalise_image(evaluation_image)
-            error = ImagesMeanSquareError.get_mean_square_error(image1, image2)
+            error = self.errorFunction.get_error(image1, image2)
             value += step
-            if error < best_error:
+            if error > best_error:
                 best_vector[index] = value
                 best_error = error
-        return best_vector
+        return best_vector, best_error
 
     def generate_images(self, images, best_movement_vector, count):
         generated_images = []

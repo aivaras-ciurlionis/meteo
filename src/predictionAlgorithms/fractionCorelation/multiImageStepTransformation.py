@@ -3,14 +3,16 @@ from src.predictionAlgorithms.correlation.baseTransformation import BaseTransfor
 
 class MultiImageStepTransformation(BaseTransformation):
     transformations = []
-    name = 'Multi image fraction'
+    baseName = 'Multi image fraction'
+    name = ''
     source_count = 4
 
-    def __init__(self, transformation_algorithm, source_count=4):
-        self.name += ' ' + transformation_algorithm[0]
+    def __init__(self, transformation_algorithm, error_function, source_count=4):
+        self.name = self.baseName + ' ' + transformation_algorithm[0]
         self.transformations = transformation_algorithm[1]
         self.source_count = source_count
-        super().__init__(transformation_algorithm)
+
+        super().__init__(transformation_algorithm, error_function)
 
     def predict(self, source_images, count):
         vectors = []

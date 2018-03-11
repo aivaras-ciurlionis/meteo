@@ -9,9 +9,14 @@ class AccuracyEvaluator:
     measuringType = 'image'
     measuringPoint = (0, 0)
     rangeStep = 1
+    errorFunction = None
 
     def set_range_step(self, step):
         self.rangeStep = step
+        return self
+
+    def set_error_function(self, error_function):
+        self.errorFunction = error_function
         return self
 
     def set_measuring_point(self, point):
@@ -62,9 +67,8 @@ class AccuracyEvaluator:
     def evaluate_part_accuracy_in_point(actual_images, generated_images, point):
         return PartAccuracyEvaluator.evaluate_part_accuracy_in_point(actual_images, generated_images, point)
 
-    @staticmethod
-    def evaluate_part_accuracy(actual_images, generated_images):
-        return PartAccuracyEvaluator.evaluate_part_accuracy(actual_images, generated_images)
+    def evaluate_part_accuracy(self, actual_images, generated_images):
+        return PartAccuracyEvaluator.evaluate_part_accuracy(actual_images, generated_images, self.errorFunction)
 
     def evaluate(self):
         overall_accuracy = []
