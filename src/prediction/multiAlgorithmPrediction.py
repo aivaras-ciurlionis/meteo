@@ -15,9 +15,15 @@ class MultiAlgorithmPrediction:
     algorithms = []
     prediction_count = 8
     output_dir = ''
+    errorFunction = None
+    algorthmNames = []
 
     DATE_FORMAT = 'YYYY-MM-DD--HH-mm-ss'
     prediction_results = None
+
+    def set_error_function(self, error_function):
+        self.errorFunction = error_function
+        return self
 
     def set_output_dir(self, dir):
         self.output_dir = dir
@@ -43,6 +49,9 @@ class MultiAlgorithmPrediction:
         self.prediction_count = count
         return self
 
+    def set_algorithm_names(self, names):
+        self.algorthmNames = names
+        return self
     def save_images(self, images, prefix):
         saved_names = []
         for index, image in enumerate(images):
@@ -86,12 +95,16 @@ class MultiAlgorithmPrediction:
 
         for index, algorithm in enumerate(self.algorithms):
             prediction = SingleAlgorithmPrediction()
-            gen_images, accuracy = prediction.predict(algorithm, source_images, actual_images, self.prediction_count)
+            gen_images, accuracy = prediction.predict(algorithm,
+                                                      source_images,
+                                                      actual_images,
+                                                      self.prediction_count,
+                                                      self.errorFunction)
             saved_names = self.save_images(gen_images, algorithm.name)
             results.append(dict(
                 files=saved_names,
                 accuracy=accuracy,
-                name=algorithm.name
+                name=self.algorthmNames[index]
             ))
 
         self.prediction_results = results
