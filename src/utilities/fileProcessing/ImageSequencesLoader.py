@@ -7,6 +7,7 @@ class ImageSequencesLoader:
     startDate = None
     endDate = None
     DATE_FORMAT = 'YYYY-MM-DD--HH-mm-ss'
+    DATE_FORMAT2 = 'YYYY-M-DD--HH-mm-ss'
 
     def select_folder(self, folder_name):
         self.srcFolder = folder_name
@@ -27,7 +28,11 @@ class ImageSequencesLoader:
         for file_name in files[1:]:
             date = date.replace(minutes=15)
             image_date_name = os.path.splitext(file_name)[0]
-            image_date = arrow.get(image_date_name, self.DATE_FORMAT)
+            try:
+                image_date = arrow.get(image_date_name, self.DATE_FORMAT)
+            except:
+                image_date = arrow.get(image_date_name, self.DATE_FORMAT2)
+
             if image_date == date:
                 new_sequence.append(file_name)
             else:
@@ -35,7 +40,10 @@ class ImageSequencesLoader:
                 if len(filtered_files) > 0:
                     sequences.append(filtered_files)
                 new_sequence = [file_name]
-                date = arrow.get(file_name, self.DATE_FORMAT)
+                try:
+                    date = arrow.get(file_name, self.DATE_FORMAT)
+                except:
+                    date = arrow.get(file_name, self.DATE_FORMAT2)
         sequences.append(self.filter_dates(new_sequence))
         print(sequences)
         return sequences
@@ -46,7 +54,10 @@ class ImageSequencesLoader:
         filtered = []
         for file in files:
             image_date_name = os.path.splitext(file)[0]
-            image_date = arrow.get(image_date_name, self.DATE_FORMAT)
+            try:
+                image_date = arrow.get(image_date_name, self.DATE_FORMAT)
+            except:
+                image_date = arrow.get(image_date_name, self.DATE_FORMAT2)
             if self.startDate <= image_date <= self.endDate:
                 filtered.append(file)
         return filtered

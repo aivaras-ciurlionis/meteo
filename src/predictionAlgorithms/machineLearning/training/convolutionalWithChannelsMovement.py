@@ -8,7 +8,7 @@ import os
 from src.utilities.imageAnalysis.pixelsRainStrengthConverter import PixelsRainStrengthConverter
 
 
-class ConvolutionalWithChannels:
+class ConvolutionalWithChannelsMovement:
 
     @staticmethod
     def train(data, size, channels):
@@ -28,7 +28,7 @@ class ConvolutionalWithChannels:
         ])
 
         model.compile(
-            optimizer=SGD(lr=0.001),
+            optimizer=SGD(lr=0.005),
             loss='mse'
         )
 
@@ -45,7 +45,7 @@ class ConvolutionalWithChannels:
         data = f[0][0].flatten()
         data = np.array(list(map(lambda x: int(x * 16), data)))
 
-        model.save('conv_chan_model.h5')
+        model.save('conv_chan_movement_model.h5')
 
         new_im.putdata(data)
         new_im.save(src)

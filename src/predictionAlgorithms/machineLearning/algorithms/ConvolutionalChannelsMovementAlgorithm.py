@@ -29,38 +29,26 @@ def offset(image, x, y):
     return i
 
 
-class ConvolutionalChannelsAlgorithm(BaseAlgorithm):
+class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
     model = None
-    name = 'Conv channels'
+    name = 'Conv channels movement'
 
     def __init__(self):
         super().__init__()
-        self.model = load_model('conv_chan_model.h5')
+        self.model = load_model('conv_chan_movement_model.h5')
 
     def predict(self, source_images, count):
         processor = SequenceProcessor()
         source_images = source_images[-4:]
-        print(len(source_images))
-
-        algorithm = MultiImageSequenceTransformation(Transformations.xy_transformation(),
-                                                     trueSkillStatistic.TrueSkillStatistic(),4)
-
-        movement_vector = algorithm.find_best_movement_vector_multi(source_images[-4].copy(), source_images[-4 + 1:])
-        print(movement_vector)
-        x_images = []
-        for j, img in enumerate(source_images):
-            next_img = offset(img, -movement_vector[0] * j, -movement_vector[1] * j)
-            converted_image = PixelsRainStrengthConverter.convert_gray_strength_to_source(next_img)
-            x_images.append(converted_image)
-        converted_images = PixelsRainStrengthConverter.convert_images(x_images, True)
+        converted_images = PixelsRainStrengthConverter.convert_loaded(source_images)
         merged_images = ChannelsInputLoader.merge_images(converted_images)
         merged_images = np.asarray([merged_images])
 
         results = []
         for i in range(0, count):
             result_image = self.model.predict(merged_images)[0][0]
-            next_image = Image.new('L', (56, 56))
 
+            next_image = Image.new('L', (56, 56))
             next_image.putdata(result_image.flatten())
             next_image = next_image.resize((64, 64))
             next_data = np.asarray(next_image.getdata())
@@ -72,14 +60,9 @@ class ConvolutionalChannelsAlgorithm(BaseAlgorithm):
             merged_images = ChannelsInputLoader.merge_images(imges)
             merged_images = np.asarray([merged_images])
 
-            result_image = result_image.flatten()
-            r = np.array(list(map(lambda y: int(y) * 16, result_image)))
-            img = Image.new('L', (56, 56))
+            r = np.array(list(map(lambda y: int(y) * 16, next_image.getdata())))
+            img = Image.new('L', (64, 64))
             img.putdata(r)
-            image = Image.new('L', (64, 64))
-            offset_x = int(movement_vector[0] * (i+4))
-            offset_y = int(movement_vector[1] * (i+4))
-            image.paste(img, (offset_x, offset_y))
-            results.append(image)
+            results.append(img)
 
         return results

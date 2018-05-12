@@ -6,11 +6,26 @@ from src.utilities.imageAnalysis.pixelToRainStrengthConverter import PixelToRain
 class PixelsRainStrengthConverter:
 
     @staticmethod
-    def convert_images(images):
+    def convert_images(images, to_categories=False):
         image_matrices = []
         for image in images:
-            image_matrices.append(PixelsRainStrengthConverter.convert_image_to_strength_image(image))
+            if to_categories:
+                image_matrices.append(PixelsRainStrengthConverter.to_categories(image))
+            else:
+                image_matrices.append(PixelsRainStrengthConverter.convert_image_to_strength_image(image))
         return image_matrices
+
+    @staticmethod
+    def to_categories(image):
+        converter = PixelToRainStrengthConverter()
+        pixels = image.getdata()
+        categories = []
+        for pixel in pixels:
+            strength = converter.convert_to_strength(pixel)
+            categories.append(strength)
+        categories = numpy.asarray(categories)
+        categories = numpy.reshape(categories, image.size)
+        return categories
 
     @staticmethod
     def convert_image_to_matrix(image):
@@ -58,3 +73,16 @@ class PixelsRainStrengthConverter:
     @staticmethod
     def get_normalised_accuracy_in(image, point):
         return image.getpixel(point) / 255
+
+    @staticmethod
+    def convert_loaded(images):
+        data = []
+        for image in images:
+            image_data = image.getdata()
+            image_data = list(map(lambda d: int(d/16), image_data))
+            print(max(image_data))
+            categories = numpy.asarray(image_data)
+            categories = numpy.reshape(categories, image.size)
+            data.append(categories)
+
+        return data

@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5aa5382a-d7b9-4f5b-a870-4047a135d5e5" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/mainTraining.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/ConvolutionalChannelsAlgorithm.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/helpers/sequenceProcessor.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannels.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/mainGeneration.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/ConvolutionalChannelsMovementAlgorithm.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/helpers/channelsInputLoader.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannelsMovement.py" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main.py" afterPath="$PROJECT_DIR$/src/main.py" />
-      <change beforePath="$PROJECT_DIR$/src/prediction/multiAlgorithmPrediction.py" afterPath="$PROJECT_DIR$/src/prediction/multiAlgorithmPrediction.py" />
-      <change beforePath="$PROJECT_DIR$/src/prediction/singleAlgorithmPrediction.py" afterPath="$PROJECT_DIR$/src/prediction/singleAlgorithmPrediction.py" />
+      <change beforePath="$PROJECT_DIR$/src/mainTraining.py" afterPath="$PROJECT_DIR$/src/mainTraining.py" />
+      <change beforePath="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/ConvolutionalChannelsAlgorithm.py" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/ConvolutionalChannelsAlgorithm.py" />
+      <change beforePath="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/helpers/sequenceProcessor.py" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/helpers/sequenceProcessor.py" />
+      <change beforePath="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannels.py" afterPath="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannels.py" />
+      <change beforePath="$PROJECT_DIR$/src/utilities/fileProcessing/ImageSequencesLoader.py" afterPath="$PROJECT_DIR$/src/utilities/fileProcessing/ImageSequencesLoader.py" />
+      <change beforePath="$PROJECT_DIR$/src/utilities/imageAnalysis/pixelsRainStrengthConverter.py" afterPath="$PROJECT_DIR$/src/utilities/imageAnalysis/pixelsRainStrengthConverter.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,35 +24,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/meteo$main.coverage" NAME="main Coverage Results" MODIFIED="1524758476816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/meteo$main.coverage" NAME="main Coverage Results" MODIFIED="1526133747988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pixelsRainStrengthConverter.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utilities/imageAnalysis/pixelsRainStrengthConverter.py">
+      <file leaf-file-name="convolutionalWithChannels.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannels.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="46" column="39" lean-forward="false" selection-start-line="45" selection-start-column="7" selection-end-line="46" selection-end-column="39" />
-              <folding />
+            <state relative-caret-position="576">
+              <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pixelToRainStrengthConverter.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utilities/imageAnalysis/pixelToRainStrengthConverter.py">
+      <file leaf-file-name="convolutionalWithChannelsMovement.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannelsMovement.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1278">
-              <caret line="71" column="27" lean-forward="false" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="baseTransformation.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="12" column="3" lean-forward="false" selection-start-line="12" selection-start-column="3" selection-end-line="16" selection-end-column="26" />
+            <state relative-caret-position="414">
+              <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -56,8 +53,8 @@
       <file leaf-file-name="ConvolutionalChannelsAlgorithm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/ConvolutionalChannelsAlgorithm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+            <state relative-caret-position="378">
+              <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -65,11 +62,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="convolutionalWithChannels.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannels.py">
+      <file leaf-file-name="ConvolutionalChannelsMovementAlgorithm.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/ConvolutionalChannelsMovementAlgorithm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+            <state relative-caret-position="378">
+              <caret line="33" column="34" lean-forward="false" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="multiImageStepTransformation.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/multiImageStepTransformation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -78,8 +85,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="954">
-              <caret line="76" column="34" lean-forward="false" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+            <state relative-caret-position="234">
+              <caret line="40" column="36" lean-forward="false" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -87,31 +94,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="multiAlgorithmPrediction.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/prediction/multiAlgorithmPrediction.py">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1692">
-              <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="singleAlgorithmPrediction.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/prediction/singleAlgorithmPrediction.py">
+      <file leaf-file-name="pixelToRainStrengthConverter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utilities/imageAnalysis/pixelToRainStrengthConverter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mainTraining.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mainTraining.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="1440">
+              <caret line="80" column="8" lean-forward="false" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -120,8 +117,20 @@
       <file leaf-file-name="sequenceProcessor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/helpers/sequenceProcessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="29" column="63" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="63" />
+            <state relative-caret-position="612">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pixelsRainStrengthConverter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utilities/imageAnalysis/pixelsRainStrengthConverter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1350">
+              <caret line="77" column="22" lean-forward="false" selection-start-line="77" selection-start-column="8" selection-end-line="77" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -160,6 +169,11 @@
       <find>se</find>
       <find>best_error</find>
       <find>print</find>
+      <find>trueSkillStatistic</find>
+      <find>offset</find>
+      <find>save_images</find>
+      <find>convert_to_gray</find>
+      <find>convert_image_to_matrix</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -176,15 +190,12 @@
         <option value="$PROJECT_DIR$/src/visualisation/evaluationChartDrawer.py" />
         <option value="$PROJECT_DIR$/src/utilities/fileProcessing/ImageLoader.py" />
         <option value="$PROJECT_DIR$/src/utilities/fileProcessing/ImagePreprocessor.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/models/algorithmPredictionResult.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/correlation/persistencyAlgorithm.py" />
-        <option value="$PROJECT_DIR$/src/utilities/fileProcessing/ImageSequencesLoader.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/correlation/xyRotationAlgorithm.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/correlation/xyTransformationAlgorithm.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/correlation/rotationAlgorithm.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/correlation/rotationXYalgorithm.py" />
-        <option value="$PROJECT_DIR$/src/utilities/imageAnalysis/pixelsRainStrengthConverter.py" />
         <option value="$PROJECT_DIR$/src/utilities/imageAnalysis/pixelToRainStrengthConverter.py" />
         <option value="$PROJECT_DIR$/src/utilities/imageAnalysis/imagesMeanSquareError.py" />
         <option value="$PROJECT_DIR$/src/visualisation/comparisonChartDrawer.py" />
@@ -193,7 +204,6 @@
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformationAlgorithm.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/baseAlgorithm.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/baseFractionCorelationAlgorithm.py" />
-        <option value="$PROJECT_DIR$/src/predictionAlgorithms/transformations.py" />
         <option value="$PROJECT_DIR$/src/measuring/multiAlgorithmAccuracyEvaluator.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/multiImageStepTransformation.py" />
         <option value="$PROJECT_DIR$/src/measuring/accuracyEvaluator.py" />
@@ -203,13 +213,22 @@
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformation.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/sequenceCorelation/multiImageSequenceTransformation.py" />
         <option value="$PROJECT_DIR$/src/prediction/singleAlgorithmPrediction.py" />
+        <option value="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/convolutionalChannels Algorithm.py" />
+        <option value="$PROJECT_DIR$/src/predictionAlgorithms/transformations.py" />
+        <option value="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/helpers/chanelsInputLoader.py" />
+        <option value="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannels.py" />
+        <option value="$PROJECT_DIR$/src/mainGeneration.py" />
+        <option value="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/helpers/channelsInputLoader.py" />
         <option value="$PROJECT_DIR$/src/prediction/multiAlgorithmPrediction.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/helpers/sequenceProcessor.py" />
-        <option value="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/convolutionalChannels Algorithm.py" />
         <option value="$PROJECT_DIR$/src/mainTraining.py" />
-        <option value="$PROJECT_DIR$/src/main.py" />
+        <option value="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannelsMovement.py" />
+        <option value="$PROJECT_DIR$/src/utilities/imageAnalysis/pixelsRainStrengthConverter.py" />
         <option value="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/ConvolutionalChannelsAlgorithm.py" />
-        <option value="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannels.py" />
+        <option value="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/ConvolutionalChannelsMovementAlgorithm.py" />
+        <option value="$PROJECT_DIR$/src/utilities/fileProcessing/ImageSequencesLoader.py" />
+        <option value="$PROJECT_DIR$/src/main.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -252,6 +271,70 @@
               <item name="meteo" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="meteo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="meteo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="predictionAlgorithms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="meteo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="meteo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="predictionAlgorithms" type="462c0819:PsiDirectoryNode" />
+              <item name="fractionCorelation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="meteo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="meteo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="predictionAlgorithms" type="462c0819:PsiDirectoryNode" />
+              <item name="machineLearning" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="meteo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="meteo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="predictionAlgorithms" type="462c0819:PsiDirectoryNode" />
+              <item name="machineLearning" type="462c0819:PsiDirectoryNode" />
+              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="meteo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="meteo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="predictionAlgorithms" type="462c0819:PsiDirectoryNode" />
+              <item name="machineLearning" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="meteo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="meteo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="predictionAlgorithms" type="462c0819:PsiDirectoryNode" />
+              <item name="machineLearning" type="462c0819:PsiDirectoryNode" />
+              <item name="training" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="meteo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="meteo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utilities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="meteo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="meteo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utilities" type="462c0819:PsiDirectoryNode" />
+              <item name="imageAnalysis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="meteo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="meteo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utilities" type="462c0819:PsiDirectoryNode" />
+              <item name="imageProcessing" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -265,6 +348,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms" />
+      <recent name="$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training" />
       <recent name="$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation" />
       <recent name="$PROJECT_DIR$/src/predictionAlgorithms/correlation" />
     </key>
@@ -281,7 +366,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.mainTraining">
+  <component name="RunManager" selected="Python.main">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -320,6 +405,26 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="mainGeneration" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="PYDEVD_LOAD_VALUES_ASYNC" value="True" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="meteo" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/mainGeneration.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="mainTraining" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -340,14 +445,16 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.main" />
       <item index="1" class="java.lang.String" itemvalue="Python.mainTraining" />
+      <item index="2" class="java.lang.String" itemvalue="Python.mainGeneration" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.mainTraining" />
-        <item index="1" class="java.lang.String" itemvalue="Python.main" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.main" />
+        <item index="1" class="java.lang.String" itemvalue="Python.mainTraining" />
+        <item index="2" class="java.lang.String" itemvalue="Python.mainGeneration" />
       </list>
     </recent_temporary>
   </component>
@@ -369,21 +476,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="34" width="1368" height="717" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16983895" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="291" height="509" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39635158" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39635158" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23426062" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3191801" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39966834" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39966834" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -425,40 +533,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <default-breakpoints>
+        <breakpoint suspend="NONE" type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/measuring/evaluationProcessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/measuring/accuracyEvaluator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="46" column="53" lean-forward="false" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="49" column="35" lean-forward="false" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/xyTransformationAlgorithm.py" />
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/baseAlgorithm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/visualisation/comparisonChartDrawer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -522,13 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2017.3/system/python_stubs/-1609694451/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -537,13 +616,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/rotationXYalgorithm.py" />
-    <entry file="file://$PROJECT_DIR$/src/visualisation/comparisonChartDrawer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/xyRotationAlgorithm.py" />
     <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/xyFractionTransformationAlgorithm.py" />
     <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/xyTransformationAlgorithm.py" />
@@ -591,13 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/transformations.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="53" column="56" lean-forward="false" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/persistencyAlgorithm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -609,27 +674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/multiImageStepTransformation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/imageProcessing/imageResizer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/sequenceCorelation/multiImageSequenceTransformation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-76">
-          <caret line="41" column="26" lean-forward="false" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -647,13 +691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/fileProcessing/ImagePreprocessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="53" column="47" lean-forward="false" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utilities/imageAnalysis/imagesMeanSquareError.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -661,100 +698,188 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/fileProcessing/ImageLoader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-378">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/fileProcessing/ImageSequencesLoader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/imageAnalysis/pixelsRainStrengthConverter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="46" column="39" lean-forward="false" selection-start-line="45" selection-start-column="7" selection-end-line="46" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/imageAnalysis/pixelToRainStrengthConverter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
-          <caret line="71" column="27" lean-forward="false" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/helpers/sequenceProcessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="63" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/correlation/baseTransformation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="12" column="3" lean-forward="false" selection-start-line="12" selection-start-column="3" selection-end-line="16" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainTraining.py">
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/transformations.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.py">
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/sequenceCorelation/multiImageSequenceTransformation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="954">
-          <caret line="76" column="34" lean-forward="false" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="324">
+          <caret line="21" column="137" lean-forward="false" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="137" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/prediction/multiAlgorithmPrediction.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1692">
-          <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="306">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/fileProcessing/ImageLoader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="28" column="32" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="28" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGeneration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/imageProcessing/imageResizer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/fileProcessing/ImagePreprocessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="9" column="32" lean-forward="true" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/prediction/singleAlgorithmPrediction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
+        <state relative-caret-position="111">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/ConvolutionalChannelsAlgorithm.py">
+    <entry file="file://$PROJECT_DIR$/src/prediction/multiAlgorithmPrediction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+        <state relative-caret-position="835">
+          <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainTraining.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="28" column="36" lean-forward="false" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/helpers/channelsInputLoader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="51" column="28" lean-forward="false" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannels.py">
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/training/convolutionalWithChannelsMovement.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        <state relative-caret-position="414">
+          <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/helpers/sequenceProcessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/imageAnalysis/pixelsRainStrengthConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="77" column="22" lean-forward="false" selection-start-line="77" selection-start-column="8" selection-end-line="77" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/fractionCorelation/multiImageStepTransformation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/ConvolutionalChannelsAlgorithm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/predictionAlgorithms/machineLearning/algorithms/ConvolutionalChannelsMovementAlgorithm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="33" column="34" lean-forward="false" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/imageAnalysis/pixelToRainStrengthConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="80" column="8" lean-forward="false" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/fileProcessing/ImageSequencesLoader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/visualisation/comparisonChartDrawer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="40" column="36" lean-forward="false" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
           <folding />
         </state>
       </provider>

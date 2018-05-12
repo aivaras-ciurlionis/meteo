@@ -1,5 +1,7 @@
 import numpy as np
 
+from src.utilities.imageAnalysis.pixelsRainStrengthConverter import PixelsRainStrengthConverter
+
 
 class SequenceProcessor:
     sequence = []
@@ -9,17 +11,22 @@ class SequenceProcessor:
         return self
 
     def merge_to_channels(self, channel_count):
+        converter = PixelsRainStrengthConverter()
         if len(self.sequence) < channel_count:
             return []
         results_x = []
         results_y = []
         for i in range(0, len(self.sequence) - channel_count - 1):
-            x_images = self.sequence[i:i + channel_count]
-            y_image_data =np.asarray(self.sequence[i + channel_count + 1])[1:63, 1:63]
-            y_image = [np.array(list(map(lambda x: x / 255, y_image_data)))]
+            images = self.sequence[i:i + channel_count + 1]
+            converted_images = converter.convert_loaded(images)
+            x_images = converted_images[0:channel_count]
+            print('mx', np.max(x_images[0]))
+
+            y_image_data = [np.asarray(converted_images[-1])[4:60, 4:60]]
             merged = self.merge_images(x_images)
             results_x.append(merged)
-            results_y.append(y_image)
+            results_y.append(y_image_data)
+
 
         return results_x, results_y
 
@@ -27,6 +34,5 @@ class SequenceProcessor:
         merged = []
         for image in images:
             data = np.asarray(image)
-            data = np.array(list(map(lambda x: x / 255, data)))
             merged.append(data)
         return merged
