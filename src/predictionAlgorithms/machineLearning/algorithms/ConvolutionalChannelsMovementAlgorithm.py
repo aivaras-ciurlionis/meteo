@@ -35,7 +35,10 @@ class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
 
     def __init__(self):
         super().__init__()
-        self.model = load_model('conv_chan_movement_model.h5')
+        self.model = load_model('epoch 11.h5')
+
+    def reload(self, model_file='conv_chan_movement_model.h5'):
+        self.model = load_model(model_file)
 
     def predict(self, source_images, count):
         processor = SequenceProcessor()
@@ -48,7 +51,7 @@ class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
         for i in range(0, count):
             result_image = self.model.predict(merged_images)[0][0]
 
-            next_image = Image.new('L', (56, 56))
+            next_image = Image.new('L', (58, 58))
             next_image.putdata(result_image.flatten())
             next_image = next_image.resize((64, 64))
             next_data = np.asarray(next_image.getdata())

@@ -23,12 +23,20 @@ evaluator = MultiAlgorithmAccuracyEvaluator()
 evaluation_processor = EvaluationProcessor()
 processor = SequenceProcessor()
 
-sequences = image_preprocessor\
+validation_sequences = image_preprocessor\
     .set_images_folder('../pics')\
     .set_resized_image_dimension(64)\
-    .set_max_images_per_sequence(600)\
-    .set_date_range('2017-10-23 01:15', '2017-10-30 23:00')\
+    .set_max_images_per_sequence(500)\
+    .set_date_range('2017-10-28 03:30', '2017-10-30 23:00')\
     .load_and_process_images()
 
-data = processor.set_sequence(sequences[0]).merge_to_channels(4)
-ConvolutionalWithChannelsMovement.train(data, 64, 4)
+
+training_sequences = image_preprocessor\
+    .set_images_folder('../pics2')\
+    .set_resized_image_dimension(64)\
+    .set_max_images_per_sequence(4000)\
+    .set_date_range('2017-11-01 05:00', '2018-04-25 14:00')\
+    .load_and_process_images()
+
+data = processor.set_sequences(training_sequences).merge_sequences_to_channels(4)
+ConvolutionalWithChannelsMovement.train(data, 64, 4, validation_sequences)

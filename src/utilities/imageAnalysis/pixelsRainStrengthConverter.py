@@ -80,7 +80,6 @@ class PixelsRainStrengthConverter:
         for image in images:
             image_data = image.getdata()
             image_data = list(map(lambda d: int(d/16), image_data))
-            print(max(image_data))
             categories = numpy.asarray(image_data)
             categories = numpy.reshape(categories, image.size)
             data.append(categories)
