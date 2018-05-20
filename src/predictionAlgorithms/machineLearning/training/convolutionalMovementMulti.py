@@ -7,39 +7,43 @@ import os
 
 from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalChannelsMovementAlgorithm import \
     ConvolutionalChannelsMovementAlgorithm
+from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalMovementMulti8Algorithm import \
+    ConvolutionalMovementMulti8Algorithm
+from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalMovementMultiAlgorithm import \
+    ConvolutionalMovementMultiAlgorithm
 from src.predictionAlgorithms.machineLearning.helpers.callbacks import Callbacks
 from src.utilities.imageAnalysis.pixelsRainStrengthConverter import PixelsRainStrengthConverter
 
 
-class ConvolutionalWithChannelsMovement:
+class ConvolutionalMovementMulti:
 
     @staticmethod
-    def train(data, size, channels, validation_data):
+    def train(data, size, channels, validation_data, output_size=4):
         x, y = data
         x = np.asarray(x)
         y = np.asarray(y)
         model = Sequential([
-            Conv2D(filters=5,
-                   kernel_size=(5, 5),
+            Conv2D(filters=8,
+                   kernel_size=(4, 4),
                    activation='relu',
                    data_format='channels_first',
                    input_shape=(channels, size, size)),
-            Conv2D(filters=1,
-                   kernel_size=(3, 3),
+            Conv2D(filters=output_size,
+                   kernel_size=(6, 6),
                    activation='relu',
                    data_format='channels_first')
         ])
 
         callback = Callbacks()
         callback\
-            .set_algorithm(ConvolutionalChannelsMovementAlgorithm())\
+            .set_algorithm(ConvolutionalMovementMulti8Algorithm())\
             .set_validation_data(validation_data)\
             .set_validation_frequency(1)
 
         model.compile(
-            optimizer=SGD(lr=0.001),
+            optimizer=SGD(lr=0.04),
             loss='mse'
         )
 
-        model.fit(x, y, epochs=20, callbacks=[callback])
-        model.save('conv_chan_movement_model.h5')
+        model.fit(x, y, epochs=6, callbacks=[callback])
+        model.save('cnn_movement_multi_8_model.h5')

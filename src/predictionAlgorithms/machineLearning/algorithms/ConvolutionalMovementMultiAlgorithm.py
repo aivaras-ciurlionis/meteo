@@ -29,43 +29,31 @@ def offset(image, x, y):
     return i
 
 
-class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
+class ConvolutionalMovementMultiAlgorithm(BaseAlgorithm):
     model = None
-    name = 'Conv channels movement'
+    name = 'Conv channels movement multi'
 
     def __init__(self):
         super().__init__()
-        self.model = load_model('savedModels/cnn_movement_1.h5')
+        self.model = load_model('savedModels/cnn_movement_multi_4.h5')
 
-    def reload(self, model_file='conv_chan_movement_model.h5'):
+    def reload(self, model_file='savedModels/cnn_movement_multi_4.h5'):
         self.model = load_model(model_file)
 
     def predict(self, source_images, count):
-        processor = SequenceProcessor()
         source_images = source_images[-4:]
         converted_images = PixelsRainStrengthConverter.convert_loaded(source_images)
         merged_images = ChannelsInputLoader.merge_images(converted_images)
         merged_images = np.asarray([merged_images])
-
         results = []
-        for i in range(0, count):
-            result_image = self.model.predict(merged_images)[0][0]
+        result_images = self.model.predict(merged_images)[0]
 
-            next_image = Image.new('L', (58, 58))
-            next_image.putdata(result_image.flatten())
-            next_image = next_image.resize((64, 64))
-            next_data = np.asarray(next_image.getdata())
-
-            next_data = next_data.reshape((64, 64))
-
-            imges = np.asarray([merged_images[0][-3], merged_images[0][-2], merged_images[0][-1], next_data])
-
-            merged_images = ChannelsInputLoader.merge_images(imges)
-            merged_images = np.asarray([merged_images])
-
-            r = np.array(list(map(lambda y: int(y) * 16, next_image.getdata())))
-            img = Image.new('L', (64, 64))
-            img.putdata(r)
+        for image in result_images:
+            r = np.array(list(map(lambda y: int(y) * 16,  image.flatten())))
+            print(r.shape)
+            next_image = Image.new('L', (56, 56))
+            next_image.putdata(r)
+            img = next_image.resize((64, 64))
             results.append(img)
 
         return results

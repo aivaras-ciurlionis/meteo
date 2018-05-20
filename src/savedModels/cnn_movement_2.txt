@@ -1,0 +1,9 @@
+   Conv2D(filters=10,
+                   kernel_size=(7, 7),
+                   activation='relu',
+                   data_format='channels_first',
+                   input_shape=(channels, size, size)),
+            Conv2DTranspose(filters=1,
+                   kernel_size=(7, 7),
+                   activation='relu',
+                   data_format='channels_first')

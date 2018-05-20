@@ -75,11 +75,16 @@ class PixelsRainStrengthConverter:
         return image.getpixel(point) / 255
 
     @staticmethod
+    def enhance_rain(p):
+        p = round(p / 16)
+        return p
+
+    @staticmethod
     def convert_loaded(images):
         data = []
         for image in images:
             image_data = image.getdata()
-            image_data = list(map(lambda d: int(d/16), image_data))
+            image_data = list(map(PixelsRainStrengthConverter.enhance_rain, image_data))
             categories = numpy.asarray(image_data)
             categories = numpy.reshape(categories, image.size)
             data.append(categories)

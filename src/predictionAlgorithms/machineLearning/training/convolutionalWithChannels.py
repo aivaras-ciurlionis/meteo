@@ -33,19 +33,4 @@ class ConvolutionalWithChannels:
         )
 
         model.fit(x, y, epochs=50)
-
-        f = model.predict(np.asarray([x[0]]))
-        print(np.max(x[0][0]))
-        print(np.max(y[0][0]))
-        print(np.max(f[0][0]))
-
-
-        src = os.path.join('../output', 'test.png')
-        new_im = Image.new("L", (56, 56))
-        data = f[0][0].flatten()
-        data = np.array(list(map(lambda x: int(x * 16), data)))
-
         model.save('conv_chan_model.h5')
-
-        new_im.putdata(data)
-        new_im.save(src)

@@ -29,19 +29,19 @@ def offset(image, x, y):
     return i
 
 
-class ConvolutionalMovementMultiAlgorithm(BaseAlgorithm):
+class ConvolutionalMovementMulti8Algorithm(BaseAlgorithm):
     model = None
     name = 'Conv channels movement multi'
 
     def __init__(self):
         super().__init__()
-        self.model = load_model('epoch 4.h5')
+        self.model = load_model('epoch 6.h5')
 
     def reload(self, model_file='conv_chan_movement_model.h5'):
         self.model = load_model(model_file)
 
     def predict(self, source_images, count):
-        source_images = source_images[-4:]
+        source_images = source_images[-8:]
         converted_images = PixelsRainStrengthConverter.convert_loaded(source_images)
         merged_images = ChannelsInputLoader.merge_images(converted_images)
         merged_images = np.asarray([merged_images])

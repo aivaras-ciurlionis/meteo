@@ -13,8 +13,8 @@ class Validation:
     def validate(self, algorithm):
         evaluator = MultiAlgorithmAccuracyEvaluator()
         results = evaluator.set_image_sequences(self.validationSequences) \
-            .set_predicted_images_count(7) \
-            .set_source_images_count(4) \
+            .set_predicted_images_count(8) \
+            .set_source_images_count(8) \
             .set_range_step(1) \
             .set_error_function(trueSkillStatistic.TrueSkillStatistic()) \
             .set_measuring_type('image') \

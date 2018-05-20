@@ -9,6 +9,10 @@ from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalChannelsAl
     ConvolutionalChannelsAlgorithm
 from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalChannelsMovementAlgorithm import \
     ConvolutionalChannelsMovementAlgorithm
+from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalMovementMulti8Algorithm import \
+    ConvolutionalMovementMulti8Algorithm
+from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalMovementMultiAlgorithm import \
+    ConvolutionalMovementMultiAlgorithm
 from src.predictionAlgorithms.sequenceCorelation.multiImageSequenceTransformation import \
     MultiImageSequenceTransformation
 
@@ -33,13 +37,13 @@ import src.predictionAlgorithms.machineLearning.algorithms
 #     .set_images_folder('../pics')\
 #     .set_resized_image_dimension(64)\
 #     .set_max_images_per_sequence(500)\
-#     .set_date_range('2017-10-28 03:30', '2017-10-30 23:00')\
+#     .set_date_range('2017-10-27 00:00', '2017-11-01 00:00')\
 #     .load_and_process_images()
 #
 # result = evaluator\
 #     .set_image_sequences(sequences)\
-#     .set_predicted_images_count(10)\
-#     .set_source_images_count(4)\
+#     .set_predicted_images_count(8)\
+#     .set_source_images_count(8)\
 #     .set_measuring_point((32,32))\
 #     .set_range_step(1)\
 #     .set_error_function(trueSkillStatistic.TrueSkillStatistic())\
@@ -47,8 +51,9 @@ import src.predictionAlgorithms.machineLearning.algorithms
 #     .set_prediction_algorithms(
 #     [
 #         PersistencyAlgorithm(),
+#         BaseTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic()),
+#         MultiImageStepTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic(), 4),
 #         MultiImageSequenceTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic(), 4),
-#         ConvolutionalChannelsAlgorithm(),
 #         ConvolutionalChannelsMovementAlgorithm()
 #     ]
 #     )\
@@ -57,20 +62,19 @@ import src.predictionAlgorithms.machineLearning.algorithms
 # drawer = ComparisonChartDrawer()
 # drawer\
 #     .set_evaluation_results(result)\
-#     .set_names(['Persistency', 'XY Sequence', 'CNN', 'CNN move'])\
+#     .set_names(['Persistency', 'Base transform', 'Step transform', 'Sequence', 'CNN movement'])\
 #     .draw_line_chart()
-#
+
 
 
 prediction = MultiAlgorithmPrediction()
 prediction.set_images_folder('../pics')\
     .set_output_dir('../../meteo-angular/src/assets/images')\
-    .set_predicted_images(10)\
+    .set_predicted_images(8)\
     .set_resize_size(64)\
     .set_error_function(trueSkillStatistic.TrueSkillStatistic())\
-    .set_source_date('2017-10-25 16:15')\
+    .set_source_date('2017-10-29 09:45')\
     .set_algorithm_names([
-        'CNN channels',
         'CNN channels movement',
         'Persistency',
         'Basic transformation',
@@ -79,11 +83,10 @@ prediction.set_images_folder('../pics')\
     ])\
     .set_algorithms(
     [
-        ConvolutionalChannelsAlgorithm(),
         ConvolutionalChannelsMovementAlgorithm(),
         PersistencyAlgorithm(),
         BaseTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic()),
-        MultiImageStepTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic(), 3),
+        MultiImageStepTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic(), 4),
         MultiImageSequenceTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic(), 4)
     ]
     )\

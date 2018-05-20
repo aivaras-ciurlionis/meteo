@@ -54,6 +54,8 @@ class AccuracyEvaluator:
         for index in range(sequence_start, sequence_end, self.rangeStep):
             generated_images = self.predictionAlgorithm\
                 .predict(sequence[index+1-self.predictionSourceImagesCount:index+1], self.predictedImagesCount)
+            if len(generated_images) < self.predictedImagesCount:
+                self.predictionSourceImagesCount = len(generated_images)
             print(index / (sequence_end-sequence_start) * 100);
             actual_img = sequence[index + 1:index + 1 + self.predictedImagesCount]
             if self.measuringType == 'image':
