@@ -68,18 +68,18 @@ import src.predictionAlgorithms.machineLearning.algorithms
 
 
 prediction = MultiAlgorithmPrediction()
-prediction.set_images_folder('../pics')\
+prediction.set_images_folder('../pics2')\
     .set_output_dir('../../meteo-angular/src/assets/images')\
     .set_predicted_images(8)\
     .set_resize_size(64)\
     .set_error_function(trueSkillStatistic.TrueSkillStatistic())\
-    .set_source_date('2017-10-29 09:45')\
+    .set_source_date('2017-11-11 13:45')\
     .set_algorithm_names([
-        'CNN channels movement',
+        'CNN-based',
         'Persistency',
-        'Basic transformation',
-        'Step transformation',
-        'Sequence transformation'
+        'Basic translation',
+        'Step translation',
+        'Sequence translation'
     ])\
     .set_algorithms(
     [
