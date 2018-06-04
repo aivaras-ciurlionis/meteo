@@ -50,7 +50,9 @@ class RadarTilesDownloader:
     def load_and_save_radar_image(self, time):
         concater = ImagesConcater()
         self.workingDir = path.join(self.baseDir, time.format('YYYY-MM-DD--HH-mm-ss'))
-        result_file = path.join(self.baseDir, 'actual', time.format('YYYY-MM-DD--HH-mm-ss') + '.png')
+        file_name = time.format('YYYY-MM-DD--HH-mm-ss') + '.png'
+        result_file = path.join(self.baseDir, 'actual', file_name)
         self.download_tiles(time)
         concater.concat_images(self.workingDir, result_file)
         shutil.rmtree(self.workingDir)
+        return file_name

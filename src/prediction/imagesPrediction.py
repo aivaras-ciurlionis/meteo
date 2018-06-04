@@ -54,8 +54,9 @@ class ImagesPrediction:
     def save_images(self, images, prefix):
         saved_names = []
         for index, image in enumerate(images):
-            src = os.path.join(self.output_dir, prefix + '_' + self.source_date + '_' + str((index + 1) * 15) + 'm_' + '.png')
-            saved_names.append(src)
+            filename = prefix + '_' + self.source_date + '_' + str((index + 1) * 15) + 'm_' + '.png'
+            src = os.path.join(self.output_dir, filename)
+            saved_names.append(filename)
             converted_image = PixelsRainStrengthConverter.convert_gray_strength_to_source(image)
             converted_image.save(src)
         return saved_names

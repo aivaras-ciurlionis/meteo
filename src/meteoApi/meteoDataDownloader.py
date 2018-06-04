@@ -51,7 +51,12 @@ class MeteoDataDownloader:
         time = arrow.get(newest_time)
         downloader = RadarTilesDownloader()
         downloader.set_dir(self.baseDir)
+        files = []
         for i in range(0, self.imagesBeforeCount):
-            downloader.load_and_save_radar_image(time)
+            file_name = downloader.load_and_save_radar_image(time)
+            files.append(file_name)
             time = time.shift(minutes=-1*self.stepMinutes)
-        return newest_time
+        return dict(
+         source_time=newest_time,
+         files=files
+        )
