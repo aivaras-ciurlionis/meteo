@@ -14,8 +14,10 @@ class ImageSequencesLoader:
         return self
 
     def set_date_range(self, start_date, end_date):
-        self.startDate = arrow.get(start_date)
-        self.endDate = arrow.get(end_date)
+        if (start_date is not None):
+            self.startDate = arrow.get(start_date)
+        if (end_date is not None):
+            self.endDate = arrow.get(end_date)
         return self
 
     def load_sequences(self):
@@ -44,7 +46,11 @@ class ImageSequencesLoader:
                     date = arrow.get(file_name, self.DATE_FORMAT)
                 except:
                     date = arrow.get(file_name, self.DATE_FORMAT2)
-        sequences.append(self.filter_dates(new_sequence))
+
+        if self.startDate is not None and self.endDate is not None:
+            sequences.append(self.filter_dates(new_sequence))
+        else:
+            sequences.append(new_sequence)
         print(sequences)
         return sequences
 

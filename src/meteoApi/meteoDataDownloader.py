@@ -54,3 +54,4 @@ class MeteoDataDownloader:
         for i in range(0, self.imagesBeforeCount):
             downloader.load_and_save_radar_image(time)
             time = time.shift(minutes=-1*self.stepMinutes)
+        return newest_time
