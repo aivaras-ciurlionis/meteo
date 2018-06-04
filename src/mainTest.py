@@ -41,5 +41,5 @@ r = prediction\
     )\
     .predict()
 
-uploader.upload_actual(result['files'], '../meteo-out/actual')
+uploader.upload_actual(result['files'], '../meteo-out')
 uploader.upload_results(r, '../output')
