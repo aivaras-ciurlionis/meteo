@@ -1,5 +1,6 @@
 import os
 
+import arrow
 
 from src.utilities.fileProcessing.ImagePreprocessor import ImagePreprocessor
 from src.utilities.imageAnalysis.pixelsRainStrengthConverter import PixelsRainStrengthConverter
@@ -11,13 +12,24 @@ class ImagesPrediction:
     algorithms = []
     algorthmNames = []
     prediction_count = 8
+    source_count = 10
     output_dir = ''
     DATE_FORMAT = 'YYYY-MM-DD--HH-mm-ss'
     source_date = ''
     prediction_results = None
+    start_date = None
+    end_date = None
+
+    def set_source_count(self, count):
+        self.source_count = count
+        return self
 
     def set_source_date(self, date):
         self.source_date = date
+        self.end_date = date
+        time = arrow.get(date)
+        time = time.shift(minutes=-self.source_count * 15)
+        self.start_date = time.format(self.DATE_FORMAT)
         return self
 
     def set_output_dir(self, dir):
@@ -46,7 +58,9 @@ class ImagesPrediction:
 
     def load_source_images(self):
         preprocessor = ImagePreprocessor()
-        images = preprocessor.set_resized_image_dimension(self.resize_size) \
+        images = preprocessor\
+            .set_resized_image_dimension(self.resize_size)\
+            .set_date_range(self.start_date, self.end_date)\
             .set_images_folder(self.images_folder) \
             .load_and_process_images()[0]
         return images

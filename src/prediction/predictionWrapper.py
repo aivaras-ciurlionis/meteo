@@ -19,15 +19,18 @@ from src.utilities.errorFunctions import trueSkillStatistic
 class PredictionWrapper:
 
     @staticmethod
-    def predict():
+    def predict(date=None):
         meteo = MeteoDataDownloader()
         prediction = ImagesPrediction()
         uploader = BlobUploader()
-
-        result = meteo.set_base_dir('../meteo-out').set_images_count(10).load_radar_data()
+        source_time = date
+        result = None
+        if date is None:
+            result = meteo.set_base_dir('../meteo-out').set_images_count(10).load_radar_data()
+            source_time = result['source_time']
         r = prediction \
             .set_resize_size(64) \
-            .set_source_date(result['source_time']) \
+            .set_source_date(source_time) \
             .set_predicted_images(16) \
             .set_output_dir('../output') \
             .set_images_folder('../meteo-out/actual') \
@@ -50,13 +53,17 @@ class PredictionWrapper:
             ]
         ) \
             .predict()
-
-        uploader.upload_actual(result['files'], '../meteo-out/actual')
+        if result is not None:
+            uploader.upload_actual(result['files'], '../meteo-out/actual')
+            final_result = dict(
+                actual=result['files'],
+                predicted=r
+            )
+        else:
+            final_result = dict(
+                predicted=r
+            )
         uploader.upload_results(r, '../output')
-        final_result = dict(
-            actual=result['files'],
-            predicted=r
-        )
         json_result = json.dumps(final_result)
         src = 'last-prediction.json'
         with open(src, 'w') as text_file:

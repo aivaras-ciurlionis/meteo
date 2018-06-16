@@ -51,7 +51,6 @@ class ImageSequencesLoader:
             sequences.append(self.filter_dates(new_sequence))
         else:
             sequences.append(new_sequence)
-        print(sequences)
         return sequences
 
     def filter_dates(self, files):

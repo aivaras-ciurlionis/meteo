@@ -1,6 +1,10 @@
-from flask import Flask
+from flask import Flask, request
 
+from src.measuring.postProcessMeasuring import PostProcessMeasuring
 from src.prediction.predictionWrapper import PredictionWrapper
+
+from src.utilities.errorFunctions import imagesMeanSquareError
+from src.utilities.errorFunctions import trueSkillStatistic
 
 app = Flask(__name__)
 
@@ -16,6 +20,26 @@ def last_prediction():
 def predict():
     result = PredictionWrapper.predict()
     return result
+
+
+@app.route("/predict-historical")
+def predict_historical():
+    date = request.args['date']
+    result = PredictionWrapper.predict(date)
+    return result
+
+
+@app.route("/accuracy")
+def get_accuracy():
+    files = request.args.getlist('files')
+    error_fun = request.args['error']
+
+    measuring = PostProcessMeasuring().set_files(files)
+    if error_fun == 'mse':
+        measuring.set_error_function(imagesMeanSquareError.ImagesMeanSquareError())
+    if error_fun == 'hk':
+        measuring.set_error_function(trueSkillStatistic.TrueSkillStatistic())
+    return measuring.evaluate()
 
 
 if __name__ == "__main__":

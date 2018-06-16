@@ -1,6 +1,7 @@
 from PIL import Image
 from keras.models import load_model
 import numpy as np
+from keras import backend as K
 
 from src.predictionAlgorithms.baseAlgorithm import BaseAlgorithm
 from src.predictionAlgorithms.machineLearning.helpers.channelsInputLoader import ChannelsInputLoader
@@ -11,6 +12,7 @@ from src.predictionAlgorithms.transformations import Transformations
 from src.utilities.imageAnalysis.pixelsRainStrengthConverter import PixelsRainStrengthConverter
 from src.utilities.errorFunctions import trueSkillStatistic
 from PIL import ImageChops as iC
+
 
 def offset(image, x, y):
     s = image.size[0]
@@ -34,7 +36,7 @@ class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
     name = 'Conv channels movement'
 
     def __init__(self,file='savedModels/cnn_movement_2.h5'):
-        super().__init__()
+        K.clear_session()
         self.model = load_model(file)
 
     def reload(self, model_file='conv_chan_movement_model.h5'):
@@ -68,5 +70,5 @@ class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
             img = Image.new('L', (64, 64))
             img.putdata(r)
             results.append(img)
-
+        self.model = None
         return results
