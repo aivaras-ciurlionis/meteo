@@ -46,11 +46,12 @@ class ImagePreprocessor:
                 .set_sequence(sequence)\
                 .set_max_images(self.maxImagesPerSequence)\
                 .load_sequence_images()
-
+            print('resizing')
             image_resizer\
                 .set_images(sequence_images)\
                 .resize_images((self.resizedImageDimension, self.resizedImageDimension))
-
+            print('resizing done')
+            print('converting')
             converted_images = converter.convert_images(sequence_images)
             prepared_sequences.append(converted_images)
 

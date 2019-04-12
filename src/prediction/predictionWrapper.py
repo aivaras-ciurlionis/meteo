@@ -1,7 +1,6 @@
 import json
-
 import os
-
+import glob
 from src.meteoApi.meteoDataDownloader import MeteoDataDownloader
 from src.prediction.imagesPrediction import ImagesPrediction
 from src.predictionAlgorithms.correlation.baseTransformation import BaseTransformation
@@ -19,7 +18,17 @@ from src.utilities.errorFunctions import trueSkillStatistic
 class PredictionWrapper:
 
     @staticmethod
+    def remove_dirs():
+        prediction_files = glob.glob('../output/*')
+        actual_files = glob.glob('../meteo-out/actual/*')
+        for f in prediction_files:
+            os.remove(f)
+        for f in actual_files:
+            os.remove(f)
+
+    @staticmethod
     def predict(date=None):
+        PredictionWrapper.remove_dirs()
         meteo = MeteoDataDownloader()
         prediction = ImagesPrediction()
         uploader = BlobUploader()

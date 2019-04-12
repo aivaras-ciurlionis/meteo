@@ -8,11 +8,14 @@ class PixelsRainStrengthConverter:
     @staticmethod
     def convert_images(images, to_categories=False):
         image_matrices = []
+        i = 0
         for image in images:
             if to_categories:
                 image_matrices.append(PixelsRainStrengthConverter.to_categories(image))
             else:
                 image_matrices.append(PixelsRainStrengthConverter.convert_image_to_strength_image(image))
+            i+=1
+            print(i/len(images))
         return image_matrices
 
     @staticmethod

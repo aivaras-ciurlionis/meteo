@@ -25,6 +25,7 @@ class ImageLoader:
             if index > self.maxImages:
                 break
             image_location = path.join(self.imagesFolder, image_name)
+            print(image_name)
             image = Image.open(image_location)
             images.append(image)
         return images

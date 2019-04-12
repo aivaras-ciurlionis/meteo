@@ -9,6 +9,11 @@ class Callbacks(keras.callbacks.Callback):
     algorithm = None
     number = 1
     validation_frequency = 1
+    size = 64
+
+    def set_size(self, size):
+        self.size = size
+        return self
 
     def set_validation_frequency(self, frequency):
         self.validation_frequency = frequency
@@ -37,10 +42,10 @@ class Callbacks(keras.callbacks.Callback):
         if self.number % self.validation_frequency != 0:
             self.number += 1
             return
-        self.model.save('epoch '+str(self.number)+'.h5')
-        self.algorithm.reload('epoch '+str(self.number)+'.h5')
+        # self.model.save('epoch '+str(self.number)+'.h5')
+        # self.algorithm.reload('epoch '+str(self.number)+'.h5')
         validation = Validation()
-        validation.set_validation_data(self.validationSequences).validate(self.algorithm)
+        validation.set_validation_data(self.validationSequences).set_dimensions(self.size).validate(self.algorithm)
         self.losses.append(logs.get('loss'))
         self.number += 1
         return

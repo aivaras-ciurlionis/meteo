@@ -22,17 +22,23 @@ class ConvolutionalMovementMulti:
         x, y = data
         x = np.asarray(x)
         y = np.asarray(y)
-        model = Sequential([
-            Conv2D(filters=8,
-                   kernel_size=(4, 4),
-                   activation='relu',
-                   data_format='channels_first',
-                   input_shape=(channels, size, size)),
-            Conv2D(filters=output_size,
-                   kernel_size=(6, 6),
-                   activation='relu',
-                   data_format='channels_first')
-        ])
+
+        # model = Sequential()
+        # model.add(Conv2D(filters=8, kernel_size=(3, 3),
+        #                    input_shape=(None, 40, 40, 1),
+        #                    padding='same', return_sequences=True))
+
+        # model = Sequential([
+        #     Conv2D(filters=8,
+        #            kernel_size=(4, 4),
+        #            activation='relu',
+        #            data_format='channels_first',
+        #            input_shape=(channels, size, size)),
+        #     Conv2D(filters=output_size,
+        #            kernel_size=(6, 6),
+        #            activation='relu',
+        #            data_format='channels_first')
+        # ])
 
         callback = Callbacks()
         callback\

@@ -1,13 +1,18 @@
 from src.measuring.evaluationProcessor import EvaluationProcessor
 from src.measuring.multiAlgorithmAccuracyEvaluator import MultiAlgorithmAccuracyEvaluator
 from src.utilities.errorFunctions import trueSkillStatistic
-
+from PIL import Image
 
 class Validation:
     validationSequences = []
+    dimension = 64
 
     def set_validation_data(self, sequences):
         self.validationSequences = sequences
+        return self
+
+    def set_dimensions(self, dimension):
+        self.dimension = dimension
         return self
 
     def validate(self, algorithm):
@@ -23,7 +28,27 @@ class Validation:
                 algorithm
             ]
         ).evaluate()
+
+        future_images = 8
+        source_images = 4
+        dim = self.dimension
+
+        test_images = self.validationSequences[0][0:source_images]
+        image_results = algorithm.predict(test_images, future_images)
+        sample_image = Image.new('L', (dim*(future_images+source_images), dim*2))
+
+        for i, image in enumerate(test_images):
+            sample_image.paste(image, (dim * i, 0))
+
+        for i, image in enumerate(self.validationSequences[0][source_images:source_images+future_images]):
+            sample_image.paste(image, (dim * (i + source_images), 0))
+
+        for i, image in enumerate(image_results):
+            sample_image.paste(image, (dim * (i + source_images), dim))
+
+        sample_image.show()
         evaluation_processor = EvaluationProcessor()
+
         averaged_results = []
         for result in results:
             eval_result = evaluation_processor \

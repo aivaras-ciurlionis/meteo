@@ -8,6 +8,9 @@ from src.utilities.errorFunctions import trueSkillStatistic
 
 app = Flask(__name__)
 
+import platform
+print(platform.python_version())
+
 
 @app.route("/last-prediction")
 def last_prediction():

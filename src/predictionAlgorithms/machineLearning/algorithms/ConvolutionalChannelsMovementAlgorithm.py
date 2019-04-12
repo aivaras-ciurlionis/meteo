@@ -35,11 +35,15 @@ class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
     model = None
     name = 'Conv channels movement'
 
-    def __init__(self,file='savedModels/cnn_movement_2.h5'):
-        K.clear_session()
-        self.model = load_model(file)
+    def __init__(self,file='savedModels/cnn_movement_2.h5',model=None):
+        if model is None:
+            self.model = load_model(file)
+        else:
+            print(model)
+            self.model = model
 
     def reload(self, model_file='conv_chan_movement_model.h5'):
+        print('reloading')
         self.model = load_model(model_file)
 
     @staticmethod
@@ -57,18 +61,17 @@ class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
         converted_images = PixelsRainStrengthConverter.convert_loaded(source_images)
         merged_images = ChannelsInputLoader.merge_images(converted_images)
         merged_images = np.asarray([merged_images])
-
+        print(2, self.model)
         results = []
         for i in range(0, count):
             result_image = self.model.predict(merged_images)[0][0]
             next_data = np.asarray(self.normalise_result(result_image.flatten()))
-            next_data = next_data.reshape((64, 64))
+            next_data = next_data.reshape((128, 128))
             imges = np.asarray([merged_images[0][-3], merged_images[0][-2], merged_images[0][-1], next_data])
             merged_images = ChannelsInputLoader.merge_images(imges)
             merged_images = np.asarray([merged_images])
             r = np.array(list(map(ConvolutionalChannelsMovementAlgorithm.remove_rain_enhancement, next_data.flatten() )))
-            img = Image.new('L', (64, 64))
+            img = Image.new('L', (128, 128))
             img.putdata(r)
             results.append(img)
-        self.model = None
         return results
