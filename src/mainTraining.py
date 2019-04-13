@@ -42,9 +42,9 @@ validation_sequences = image_preprocessor\
     .set_images_folder('../pics')\
     .set_resized_image_dimension(128)\
     .set_max_images_per_sequence(50)\
-    .set_date_range('2017-10-28 03:30', '2017-10-30 23:00')\
+    .set_date_range('2017-10-28 09:15', '2017-10-30 23:00')\
     .load_and_process_images()
-#
+
 # training_sequences = image_preprocessor\
 #     .set_images_folder('../pics2')\
 #     .set_resized_image_dimension(128)\
@@ -52,13 +52,17 @@ validation_sequences = image_preprocessor\
 #     .set_date_range('2017-11-01 05:00', '2018-04-20 14:00')\
 #     .load_and_process_images()
 #
-data = processor.set_sequences(training_sequences).merge_sequences_to_channels(4, 1, 128, True)
-# #
-# BinaryProcessor.save_data(data, '2018-04-20-removed')
+# data = processor.set_sequences(training_sequences).merge_sequences_to_channels_with_steps(4, 2, 128)
 #
-x = np.load('../binary_images/x-2018-04-20(6432, 4, 128, 128).npy')
-y = np.load('../binary_images/y-2018-04-20(6432, 4, 128, 128).npy')
+# BinaryProcessor.save_data(data, '2018-04-20-s2')
+#
+# x = np.load('../binary_images/x-2018-04-20(6432, 4, 128, 128).npy')
+# y = np.load('../binary_images/y-2018-04-20(6432, 4, 128, 128).npy')
+#
+# ConvolutionalWithChannelsMovement.train((x,y), 128, 4, validation_sequences)
+#
 
-print(x.shape, y.shape)
 
-ConvolutionalWithChannelsMovement.train((x,y), 128, 4, validation_sequences)
+x = np.load('../binary_images/x-2018-04-20-s2(4961, 4, 128, 128).npy')
+y = np.load('../binary_images/y-2018-04-20-s2(4961, 4, 128, 128).npy')
+ConvolutionalWithChannelsMovement.train((x,y), 128, 4, validation_sequences, 2)

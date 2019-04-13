@@ -16,13 +16,13 @@ from src.utilities.imageAnalysis.pixelsRainStrengthConverter import PixelsRainSt
 class ConvolutionalWithChannelsMovement:
 
     @staticmethod
-    def train(data, size, channels, validation_data):
+    def train(data, size, channels, validation_data, step=1):
         x, y = data
 
         model = Sequential()
         model.add(
             Conv2D(
-                   filters=4,
+                   filters=channels,
                    kernel_size=(7, 7),
                    activation='relu',
                    input_shape=(channels, size, size),
@@ -35,9 +35,6 @@ class ConvolutionalWithChannelsMovement:
                             data_format='channels_first')
         )
 
-
-
-
         model.compile(
             optimizer=SGD(lr=0.01),
             loss='mse'
@@ -45,10 +42,11 @@ class ConvolutionalWithChannelsMovement:
 
         callback = Callbacks()
         callback \
-            .set_algorithm(ConvolutionalChannelsMovementAlgorithm(model=model)) \
+            .set_algorithm(ConvolutionalChannelsMovementAlgorithm(model=model).with_step(step)) \
             .set_validation_data(validation_data) \
             .set_size(size) \
+            .set_step(step) \
             .set_validation_frequency(1)
 
         model.fit(x, y, epochs=10, shuffle=True, callbacks=[callback])
-        model.save('conv_chan_movement_model_4.h5')
+        model.save('conv_chan_movement_model_4-s2.h5')

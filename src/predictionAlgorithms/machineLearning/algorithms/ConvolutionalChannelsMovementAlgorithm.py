@@ -43,7 +43,6 @@ class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
             self.model = model
 
     def reload(self, model_file='conv_chan_movement_model.h5'):
-        print('reloading')
         self.model = load_model(model_file)
 
     @staticmethod
@@ -56,22 +55,22 @@ class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
         return list(map(lambda x: round(x), result))
 
     def predict(self, source_images, count):
-        processor = SequenceProcessor()
-        source_images = source_images[-4:]
         converted_images = PixelsRainStrengthConverter.convert_loaded(source_images)
         merged_images = ChannelsInputLoader.merge_images(converted_images)
         merged_images = np.asarray([merged_images])
-        print(2, self.model)
         results = []
         for i in range(0, count):
             result_image = self.model.predict(merged_images)[0][0]
             next_data = np.asarray(self.normalise_result(result_image.flatten()))
-            next_data = next_data.reshape((128, 128))
-            imges = np.asarray([merged_images[0][-3], merged_images[0][-2], merged_images[0][-1], next_data])
-            merged_images = ChannelsInputLoader.merge_images(imges)
+            next_data = next_data.reshape((self.size, self.size))
+            im = []
+            for j in range(self.base - 1, 0, -1):
+                im.append(merged_images[0][-j])
+            im.append(next_data)
+            merged_images = ChannelsInputLoader.merge_images(np.asarray(im))
             merged_images = np.asarray([merged_images])
-            r = np.array(list(map(ConvolutionalChannelsMovementAlgorithm.remove_rain_enhancement, next_data.flatten() )))
-            img = Image.new('L', (128, 128))
+            r = np.array(list(map(ConvolutionalChannelsMovementAlgorithm.remove_rain_enhancement, next_data.flatten())))
+            img = Image.new('L', (self.size, self.size))
             img.putdata(r)
             results.append(img)
         return results
