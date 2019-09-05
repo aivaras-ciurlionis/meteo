@@ -47,8 +47,7 @@ class PixelsRainStrengthConverter:
     @staticmethod
     def convert_image_to_strength_image(image):
         converter = PixelToRainStrengthConverter()
-        matrix = PixelsRainStrengthConverter.convert_image_to_matrix(image)
-        strength_list = matrix.flatten()
+        strength_list = image.getdata()
         strength_list = list(map(lambda s: converter.convert_to_gray(s), strength_list))
         converted_image = Image.new('L', image.size)
         converted_image.putdata(strength_list)

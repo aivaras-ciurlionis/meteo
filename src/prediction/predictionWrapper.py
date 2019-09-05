@@ -19,8 +19,8 @@ class PredictionWrapper:
 
     @staticmethod
     def remove_dirs():
-        prediction_files = glob.glob('../output/*')
-        actual_files = glob.glob('../meteo-out/actual/*')
+        prediction_files = glob.glob('output/*')
+        actual_files = glob.glob('meteo-out/actual/*')
         for f in prediction_files:
             os.remove(f)
         for f in actual_files:
@@ -35,35 +35,28 @@ class PredictionWrapper:
         source_time = date
         result = None
         if date is None:
-            result = meteo.set_base_dir('../meteo-out').set_images_count(10).load_radar_data()
+            result = meteo.set_base_dir('meteo-out').set_images_count(10).load_radar_data()
             source_time = result['source_time']
         r = prediction \
-            .set_resize_size(64) \
+            .set_resize_size(128) \
             .set_source_date(source_time) \
             .set_predicted_images(16) \
-            .set_output_dir('../output') \
-            .set_images_folder('../meteo-out/actual') \
+            .set_output_dir('output') \
+            .set_images_folder('meteo-out/actual') \
             .set_algorithm_names([
                 'CNN-based',
-                'Persistency',
-                'Basic-translation',
-                'Step-translation',
                 'Sequence-translation'
              ]) \
             .set_algorithms(
             [
                 ConvolutionalChannelsMovementAlgorithm(),
-                PersistencyAlgorithm(),
-                BaseTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic()),
-                MultiImageStepTransformation(Transformations.xy_transformation(),
-                                             trueSkillStatistic.TrueSkillStatistic(), 4),
                 MultiImageSequenceTransformation(Transformations.xy_transformation(),
                                                  trueSkillStatistic.TrueSkillStatistic(), 4)
             ]
         ) \
             .predict()
         if result is not None:
-            uploader.upload_actual(result['files'], '../meteo-out/actual')
+            uploader.upload_actual(result['files'], 'meteo-out/actual')
             final_result = dict(
                 actual=result['files'],
                 predicted=r
@@ -72,7 +65,7 @@ class PredictionWrapper:
             final_result = dict(
                 predicted=r
             )
-        uploader.upload_results(r, '../output')
+        uploader.upload_results(r, 'output')
         json_result = json.dumps(final_result)
         src = 'last-prediction.json'
         with open(src, 'w') as text_file:

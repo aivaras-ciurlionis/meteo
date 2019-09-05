@@ -69,25 +69,19 @@ import src.predictionAlgorithms.machineLearning.algorithms
 
 
 prediction = MultiAlgorithmPrediction()
-prediction.set_images_folder('../pics2')\
+prediction.set_images_folder('../pics-full/MeteoData/Data')\
     .set_output_dir('../../meteo-angular/src/assets/images')\
-    .set_predicted_images(8)\
-    .set_resize_size(64)\
+    .set_predicted_images(16)\
+    .set_resize_size(128)\
     .set_error_function(trueSkillStatistic.TrueSkillStatistic())\
-    .set_source_date('2017-11-11 13:45')\
+    .set_source_date('2018-10-02 21:00')\
     .set_algorithm_names([
         'CNN-based',
-        'Persistency',
-        'Basic translation',
-        'Step translation',
         'Sequence translation'
     ])\
     .set_algorithms(
     [
         ConvolutionalChannelsMovementAlgorithm(),
-        PersistencyAlgorithm(),
-        BaseTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic()),
-        MultiImageStepTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic(), 4),
         MultiImageSequenceTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic(), 4)
     ]
     )\

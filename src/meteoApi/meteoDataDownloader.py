@@ -1,7 +1,6 @@
 import arrow
 import os
 import requests
-from lxml.etree import ElementTree
 import xmltodict
 from urllib.request import urlopen
 

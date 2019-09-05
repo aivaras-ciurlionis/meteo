@@ -7,9 +7,14 @@ from src.utilities.imageProcessing.imageResizer import ImageResizer
 class ImagePreprocessor:
     imagesFolder = ''
     resizedImageDimension = 128
+    cropAmount = 0
     maxImagesPerSequence = 10000
     startDate = None
     endDate = None
+
+    def set_crop_amount(self, amount):
+        self.cropAmount = amount
+        return self
 
     def set_images_folder(self, folder):
         self.imagesFolder = folder
@@ -49,6 +54,7 @@ class ImagePreprocessor:
             print('resizing')
             image_resizer\
                 .set_images(sequence_images)\
+                .set_crop_amount(self.cropAmount)\
                 .resize_images((self.resizedImageDimension, self.resizedImageDimension))
             print('resizing done')
             print('converting')

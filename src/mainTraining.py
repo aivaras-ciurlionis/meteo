@@ -33,6 +33,17 @@ from src.predictionAlgorithms.machineLearning.training.convolutionalWithChannels
 from src.utilities.fileProcessing.BinaryProcessor import BinaryProcessor
 from src.utilities.fileProcessing.ImagePreprocessor import ImagePreprocessor
 
+
+def imageLoader():
+    while True:
+        file_i = 0
+        while file_i < 222:
+            X = np.load('../binary_images/2019-08-20-128/x-2019-08-20-128(100, 4, 128, 128)-' + str(file_i) + '.npy')
+            Y = np.load('../binary_images/2019-08-20-128/y-2019-08-20-128(100, 1, 128, 128)-' + str(file_i) + '.npy')
+            yield (X,Y) #a tuple with two numpy arrays with batch_size samples
+            file_i += 1
+
+
 image_preprocessor = ImagePreprocessor()
 evaluator = MultiAlgorithmAccuracyEvaluator()
 evaluation_processor = EvaluationProcessor()
@@ -46,23 +57,23 @@ validation_sequences = image_preprocessor\
     .load_and_process_images()
 
 # training_sequences = image_preprocessor\
-#     .set_images_folder('../pics2')\
+#     .set_images_folder('../pics-full/MeteoData/Data')\
+#     .set_crop_amount(0)\
 #     .set_resized_image_dimension(128)\
-#     .set_max_images_per_sequence(2000)\
-#     .set_date_range('2017-11-01 05:00', '2018-04-20 14:00')\
+#     .set_max_images_per_sequence(10000)\
+#     .set_date_range('2017-11-01 05:00', '2019-08-20 14:00')\
 #     .load_and_process_images()
-#
-# data = processor.set_sequences(training_sequences).merge_sequences_to_channels_with_steps(4, 2, 128)
-#
-# BinaryProcessor.save_data(data, '2018-04-20-s2')
+
+# data = processor.set_sequences(training_sequences).merge_sequences_to_channels(4, 1, 128, '2019-08-20-128')
+
+# BinaryProcessor.save_data(data, '2018-04-20-cropped-s1')
 #
 # x = np.load('../binary_images/x-2018-04-20(6432, 4, 128, 128).npy')
 # y = np.load('../binary_images/y-2018-04-20(6432, 4, 128, 128).npy')
-#
-# ConvolutionalWithChannelsMovement.train((x,y), 128, 4, validation_sequences)
-#
+
+ConvolutionalWithChannelsMovement.train(None, 128, 4, validation_sequences, imageLoader)
 
 
-x = np.load('../binary_images/x-2018-04-20-s2(4961, 4, 128, 128).npy')
-y = np.load('../binary_images/y-2018-04-20-s2(4961, 4, 128, 128).npy')
-ConvolutionalWithChannelsMovement.train((x,y), 128, 4, validation_sequences, 2)
+# x = np.load('../binary_images/x-2018-04-20-s2(4961, 4, 128, 128).npy')
+# y = np.load('../binary_images/y-2018-04-20-s2(4961, 4, 128, 128).npy')
+# ConvolutionalWithChannelsMovement.train((x,y), 128, 4, validation_sequences, 2)

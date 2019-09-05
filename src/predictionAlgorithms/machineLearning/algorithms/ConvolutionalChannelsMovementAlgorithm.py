@@ -35,14 +35,14 @@ class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
     model = None
     name = 'Conv channels movement'
 
-    def __init__(self,file='savedModels/cnn_movement_2.h5',model=None):
+    def __init__(self,file='src/savedModels/conv_chan_movement_model_20000-7x7.h5',model=None):
         if model is None:
             self.model = load_model(file)
         else:
             print(model)
             self.model = model
 
-    def reload(self, model_file='conv_chan_movement_model.h5'):
+    def reload(self, model_file='src/savedModels/conv_chan_movement_model_20000-7x7.h5'):
         self.model = load_model(model_file)
 
     @staticmethod
@@ -55,7 +55,7 @@ class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
         return list(map(lambda x: round(x), result))
 
     def predict(self, source_images, count):
-        converted_images = PixelsRainStrengthConverter.convert_loaded(source_images)
+        converted_images = PixelsRainStrengthConverter.convert_loaded(source_images[-4:])
         merged_images = ChannelsInputLoader.merge_images(converted_images)
         merged_images = np.asarray([merged_images])
         results = []

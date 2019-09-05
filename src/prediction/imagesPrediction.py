@@ -67,6 +67,8 @@ class ImagesPrediction:
 
     def save_images(self, images, prefix):
         saved_names = []
+        if not os.path.exists(self.output_dir):
+            os.makedirs(self.output_dir)
         for index, image in enumerate(images):
             filename = prefix + '_' + self.source_date + '_' + str((index + 1) * 15) + 'm_' + '.png'
             src = os.path.join(self.output_dir, filename)

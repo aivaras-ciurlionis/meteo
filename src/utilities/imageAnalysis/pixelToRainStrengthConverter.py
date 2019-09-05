@@ -77,7 +77,6 @@ class PixelToRainStrengthConverter:
     def convert_to_pixel(self, strength):
         return self.strength_to_pixel(strength)
 
-    @staticmethod
-    def convert_to_gray(strength):
-        strength *= 16
+    def convert_to_gray(self, pixel):
+        strength = self.pixel_to_strength(pixel) * 16
         return int(strength)

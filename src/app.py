@@ -43,7 +43,3 @@ def get_accuracy():
     if error_fun == 'hk':
         measuring.set_error_function(trueSkillStatistic.TrueSkillStatistic())
     return measuring.evaluate()
-
-
-if __name__ == "__main__":
-    app.run()
