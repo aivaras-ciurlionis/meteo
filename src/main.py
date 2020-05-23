@@ -1,34 +1,14 @@
-from src.measuring.accuracyEvaluator import AccuracyEvaluator
-from src.measuring.evaluationProcessor import EvaluationProcessor
-from src.measuring.multiAlgorithmAccuracyEvaluator import MultiAlgorithmAccuracyEvaluator
 from src.prediction.multiAlgorithmPrediction import MultiAlgorithmPrediction
-from src.predictionAlgorithms.correlation.baseTransformation import BaseTransformation
-from src.predictionAlgorithms.correlation.persistencyAlgorithm import PersistencyAlgorithm
-from src.predictionAlgorithms.fractionCorelation.multiImageStepTransformation import MultiImageStepTransformation
-from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalChannelsAlgorithm import \
-    ConvolutionalChannelsAlgorithm
+
+from src.predictionAlgorithms.machineLearning.algorithms.ConvLSTM import ConvLstm
 from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalChannelsMovementAlgorithm import \
     ConvolutionalChannelsMovementAlgorithm
-from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalMovementMulti8Algorithm import \
-    ConvolutionalMovementMulti8Algorithm
-from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalMovementMultiAlgorithm import \
-    ConvolutionalMovementMultiAlgorithm
 from src.predictionAlgorithms.sequenceCorelation.multiImageSequenceTransformation import \
     MultiImageSequenceTransformation
 
 from src.predictionAlgorithms.transformations import Transformations
-from src.utilities.fileProcessing.ImagePreprocessor import ImagePreprocessor
-from src.visualisation.comparisonChartDrawer import ComparisonChartDrawer
-from src.visualisation.evaluationChartDrawer import EvaluationChartDrawer
-from PIL import ImageChops as iC
 
-from src.utilities.errorFunctions import imagesMeanSquareError
 from src.utilities.errorFunctions import trueSkillStatistic
-
-
-
-
-import src.predictionAlgorithms.machineLearning.algorithms
 
 # image_preprocessor = ImagePreprocessor()
 # evaluator = MultiAlgorithmAccuracyEvaluator()
@@ -74,14 +54,16 @@ prediction.set_images_folder('../pics-full/MeteoData/Data')\
     .set_predicted_images(16)\
     .set_resize_size(128)\
     .set_error_function(trueSkillStatistic.TrueSkillStatistic())\
-    .set_source_date('2018-10-02 21:00')\
+    .set_source_date('2018-07-15 16:00')\
     .set_algorithm_names([
         'CNN-based',
+        'ConvLSTM',
         'Sequence translation'
     ])\
     .set_algorithms(
     [
         ConvolutionalChannelsMovementAlgorithm(),
+        ConvLstm(),
         MultiImageSequenceTransformation(Transformations.xy_transformation(), trueSkillStatistic.TrueSkillStatistic(), 4)
     ]
     )\

@@ -6,6 +6,9 @@ from src.prediction.imagesPrediction import ImagesPrediction
 from src.predictionAlgorithms.correlation.baseTransformation import BaseTransformation
 from src.predictionAlgorithms.correlation.persistencyAlgorithm import PersistencyAlgorithm
 from src.predictionAlgorithms.fractionCorelation.multiImageStepTransformation import MultiImageStepTransformation
+from src.predictionAlgorithms.machineLearning.algorithms.AE import AE
+from src.predictionAlgorithms.machineLearning.algorithms.CNN4L import CNN4L
+from src.predictionAlgorithms.machineLearning.algorithms.ConvLSTM import ConvLstm
 from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalChannelsMovementAlgorithm import \
     ConvolutionalChannelsMovementAlgorithm
 from src.predictionAlgorithms.sequenceCorelation.multiImageSequenceTransformation import \
@@ -34,24 +37,27 @@ class PredictionWrapper:
         uploader = BlobUploader()
         source_time = date
         result = None
+        print('loading radar data')
         if date is None:
             result = meteo.set_base_dir('meteo-out').set_images_count(10).load_radar_data()
             source_time = result['source_time']
+        print('starting prediction')
         r = prediction \
-            .set_resize_size(128) \
+            .set_resize_size(64) \
             .set_source_date(source_time) \
             .set_predicted_images(16) \
             .set_output_dir('output') \
             .set_images_folder('meteo-out/actual') \
             .set_algorithm_names([
-                'CNN-based',
-                'Sequence-translation'
+                'CNN4L',
+                'AE',
+                'ConvLSTM'
              ]) \
             .set_algorithms(
             [
-                ConvolutionalChannelsMovementAlgorithm(),
-                MultiImageSequenceTransformation(Transformations.xy_transformation(),
-                                                 trueSkillStatistic.TrueSkillStatistic(), 4)
+                CNN4L(),
+                AE(),
+                ConvLstm()
             ]
         ) \
             .predict()

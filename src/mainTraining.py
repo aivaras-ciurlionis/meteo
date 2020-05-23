@@ -27,7 +27,8 @@ from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalChannelsMo
     ConvolutionalChannelsMovementAlgorithm
 from src.predictionAlgorithms.machineLearning.helpers.callbacks import Callbacks
 from src.predictionAlgorithms.machineLearning.helpers.sequenceProcessor import SequenceProcessor
-from src.predictionAlgorithms.machineLearning.training.convolutionalMovementMulti import ConvolutionalMovementMulti
+
+from src.predictionAlgorithms.machineLearning.training.convolutionalLstm import ConvolutionalLstmTrain
 from src.predictionAlgorithms.machineLearning.training.convolutionalWithChannelsMovement import \
     ConvolutionalWithChannelsMovement
 from src.utilities.fileProcessing.BinaryProcessor import BinaryProcessor
@@ -35,12 +36,15 @@ from src.utilities.fileProcessing.ImagePreprocessor import ImagePreprocessor
 
 
 def imageLoader():
+    folder = '../binary_images/2019-08-20-128'
+    shapeX = 'x-2019-08-20-128(100, 4, 128, 128)-'
+    shapeY = 'y-2019-08-20-128(100, 1, 128, 128)-'
     while True:
         file_i = 0
-        while file_i < 222:
-            X = np.load('../binary_images/2019-08-20-128/x-2019-08-20-128(100, 4, 128, 128)-' + str(file_i) + '.npy')
-            Y = np.load('../binary_images/2019-08-20-128/y-2019-08-20-128(100, 1, 128, 128)-' + str(file_i) + '.npy')
-            yield (X,Y) #a tuple with two numpy arrays with batch_size samples
+        while file_i < 224:
+            x = np.load(folder + '/' + shapeX + str(file_i) + '.npy')
+            y = np.load(folder + '/' + shapeY + str(file_i) + '.npy')
+            yield (x, y)
             file_i += 1
 
 
@@ -49,31 +53,31 @@ evaluator = MultiAlgorithmAccuracyEvaluator()
 evaluation_processor = EvaluationProcessor()
 processor = SequenceProcessor()
 
+#
 validation_sequences = image_preprocessor\
     .set_images_folder('../pics')\
     .set_resized_image_dimension(128)\
     .set_max_images_per_sequence(50)\
-    .set_date_range('2017-10-28 09:15', '2017-10-30 23:00')\
+    .set_date_range('2017-10-28 09:15', '2017-10-28 23:00')\
     .load_and_process_images()
 
 # training_sequences = image_preprocessor\
 #     .set_images_folder('../pics-full/MeteoData/Data')\
 #     .set_crop_amount(0)\
 #     .set_resized_image_dimension(128)\
-#     .set_max_images_per_sequence(10000)\
-#     .set_date_range('2017-11-01 05:00', '2019-08-20 14:00')\
+#     .set_max_images_per_sequence(1000)\
+#     .set_date_range('2017-11-01 05:00', '2017-12-31 14:00')\
 #     .load_and_process_images()
-
-# data = processor.set_sequences(training_sequences).merge_sequences_to_channels(4, 1, 128, '2019-08-20-128')
-
-# BinaryProcessor.save_data(data, '2018-04-20-cropped-s1')
 #
-# x = np.load('../binary_images/x-2018-04-20(6432, 4, 128, 128).npy')
-# y = np.load('../binary_images/y-2018-04-20(6432, 4, 128, 128).npy')
+# data = processor.set_sequences(training_sequences).merge_sequences_to_channels(4, 1, 128, '128-4-1-2017')
 
-ConvolutionalWithChannelsMovement.train(None, 128, 4, validation_sequences, imageLoader)
+# data = processor.set_sequences(training_sequences)\
+#     .merge_sequences_to_channels(4, 4, 128, 'sq4-2018', True)
 
+x = np.load('../binary_images/128-4-1-2017/x-128-4-1-2017(1000, 4, 128, 128)-0.npy')
+y = np.load('../binary_images/128-4-1-2017/y-128-4-1-2017(1000, 1, 128, 128)-0.npy')
+#
+#
+# ConvolutionalLstmTrain.train(128, 6, validation_sequences, imageLoader, (x,y))
 
-# x = np.load('../binary_images/x-2018-04-20-s2(4961, 4, 128, 128).npy')
-# y = np.load('../binary_images/y-2018-04-20-s2(4961, 4, 128, 128).npy')
-# ConvolutionalWithChannelsMovement.train((x,y), 128, 4, validation_sequences, 2)
+ConvolutionalWithChannelsMovement.train(128, 4, validation_sequences, imageLoader, 1, (x, y))

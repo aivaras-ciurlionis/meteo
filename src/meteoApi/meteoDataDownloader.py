@@ -52,6 +52,7 @@ class MeteoDataDownloader:
         downloader.set_dir(self.baseDir)
         files = []
         for i in range(0, self.imagesBeforeCount):
+            print('loading image', str(i))
             file_name = downloader.load_and_save_radar_image(time)
             files.append(file_name)
             time = time.shift(minutes=-1*self.stepMinutes)

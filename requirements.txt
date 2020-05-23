@@ -1,4 +1,4 @@
-azure
+azure==4.0.0
 plotly
 sklearn
 requests
@@ -9,3 +9,4 @@ Pillow==3.1.2
 tensorflow
 keras
 arrow==0.12.0
+grpcio==1.27.2

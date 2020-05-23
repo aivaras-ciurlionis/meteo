@@ -47,9 +47,11 @@ class ChannelsInputLoader:
         return results_x, results_y
 
     @staticmethod
-    def merge_images(images):
+    def merge_images(images, timed=False):
         merged = []
         for image in images:
             data = np.asarray(image)
+            if timed:
+                data = np.asarray([data])
             merged.append(data)
         return merged

@@ -35,14 +35,14 @@ class ConvolutionalChannelsMovementAlgorithm(BaseAlgorithm):
     model = None
     name = 'Conv channels movement'
 
-    def __init__(self,file='src/savedModels/conv_chan_movement_model_20000-7x7.h5',model=None):
+    def __init__(self,file='savedModels/conv_chan_movement_model_20000-7x7.h5',model=None):
         if model is None:
             self.model = load_model(file)
         else:
             print(model)
             self.model = model
 
-    def reload(self, model_file='src/savedModels/conv_chan_movement_model_20000-7x7.h5'):
+    def reload(self, model_file='savedModels/conv_chan_movement_model_20000-7x7.h5'):
         self.model = load_model(model_file)
 
     @staticmethod

@@ -11,33 +11,41 @@ from src.predictionAlgorithms.machineLearning.algorithms.ConvolutionalChannelsMo
     ConvolutionalChannelsMovementAlgorithm
 from src.predictionAlgorithms.machineLearning.helpers.callbacks import Callbacks
 from src.utilities.imageAnalysis.pixelsRainStrengthConverter import PixelsRainStrengthConverter
-
+import keras
 
 class ConvolutionalWithChannelsMovement:
 
     @staticmethod
-    def train(data, size, channels, validation_data, loader, step=1):
-        # x, y = data
-        kernel = 10
-
+    def train(size, channels, validation_data, loader, step, val):
         model = Sequential()
         model.add(
             Conv2D(
-                   filters=channels,
-                   kernel_size=(7, 7),
+                   filters=4,
+                   kernel_size=(8, 8),
+                   padding='same',
                    activation='relu',
                    input_shape=(channels, size, size),
                    data_format='channels_first')
         )
         model.add(
-            Conv2DTranspose(filters=1,
-                            kernel_size=(7, 7),
-                            activation='relu',
-                            data_format='channels_first')
+            Conv2D(
+                filters=2,
+                kernel_size=(4, 4),
+                padding='same',
+                activation='relu',
+                input_shape=(channels, size, size),
+                data_format='channels_first')
         )
-
+        model.add(
+            Conv2D(
+                filters=1,
+                kernel_size=(4, 4),
+                padding='same',
+                activation='relu',
+                data_format='channels_first')
+        )
         model.compile(
-            optimizer=SGD(lr=0.005),
+            optimizer=SGD(lr=0.01),
             loss='mse'
         )
 
@@ -49,7 +57,12 @@ class ConvolutionalWithChannelsMovement:
             .set_step(step) \
             .set_validation_frequency(1)
 
-        model.fit_generator(loader(), epochs=50, steps_per_epoch=25, shuffle=True, callbacks=[callback])
-        model.save('conv_chan_movement_model_20000-7x7.h5')
+        keras.callbacks.ModelCheckpoint('conv_chan_movement_model_20000-128-8x8-6x6-4x4.h5', monitor='val_loss', verbose=0, save_best_only=False,
+                                        save_weights_only=False, mode='auto', period=1)
+
+        model.fit_generator(loader(), epochs=20, steps_per_epoch=224, shuffle=True, callbacks=[callback], validation_data=val)
+        model.save('conv_chan_movement_model_20000-128-4x4-6x6.h5')
 
 # K: 10 LR: 0.001 SpE = 50
+
+# 128-8x8(6)-3x3(1)-6x6(1)

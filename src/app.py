@@ -21,6 +21,7 @@ def last_prediction():
 
 @app.route("/predict")
 def predict():
+    print('Prediction Start')
     result = PredictionWrapper.predict()
     return result
 

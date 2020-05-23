@@ -5,5 +5,4 @@ COPY . /app
 
 WORKDIR /app
 EXPOSE 5000
-ENTRYPOINT ["python"]
-CMD ["__init__.py"]
+CMD ["python","-u", "__init__.py"]

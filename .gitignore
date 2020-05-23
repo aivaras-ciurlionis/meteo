@@ -9,3 +9,6 @@ meteo-out
 .idea/
 binary_images
 *.png
+comb/
+meteorologydata.blob.core.windows.net/
+packages-microsoft-prod.deb

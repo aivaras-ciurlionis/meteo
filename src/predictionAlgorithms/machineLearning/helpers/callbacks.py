@@ -1,8 +1,12 @@
 import keras
 from sklearn.metrics import roc_auc_score
-
 from src.predictionAlgorithms.machineLearning.helpers.validation import Validation
-
+import matplotlib
+matplotlib.use('agg')
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+import glob
 
 class Callbacks(keras.callbacks.Callback):
     validationSequences = []
@@ -38,8 +42,16 @@ class Callbacks(keras.callbacks.Callback):
         return self
 
     def on_train_begin(self, logs={}):
-        self.aucs = []
+        # Initialize the lists for holding the logs, losses and accuracies
         self.losses = []
+        self.acc = []
+        self.val_losses = []
+        self.val_acc = []
+        self.logs = []
+        epoch_graphs = glob.glob('../output/*')
+        for f in epoch_graphs:
+            os.remove(f)
+
 
     def on_train_end(self, logs={}):
         return
@@ -48,7 +60,6 @@ class Callbacks(keras.callbacks.Callback):
         return
 
     def on_epoch_end(self, epoch, logs={}):
-        print('epoch '+str(self.number))
         if self.number % self.validation_frequency != 0:
             self.number += 1
             return
@@ -58,8 +69,28 @@ class Callbacks(keras.callbacks.Callback):
             .set_base(self.base)\
             .set_step(self.step)\
             .validate(self.algorithm)
-        self.losses.append(logs.get('loss'))
+
         self.number += 1
+
+        self.logs.append(logs)
+        self.losses.append(logs.get('loss'))
+        self.acc.append(logs.get('acc'))
+        self.val_losses.append(logs.get('val_loss'))
+        self.val_acc.append(logs.get('val_acc'))
+
+        if len(self.losses) > 1:
+            N = np.arange(0, len(self.losses))
+            plt.figure()
+            plt.plot(N, self.losses, label="train_loss")
+            plt.plot(N, self.acc, label="train_acc")
+            plt.plot(N, self.val_losses, label="val_loss")
+            plt.plot(N, self.val_acc, label="val_acc")
+            plt.title("Training Loss and Accuracy [Epoch {}]".format(epoch))
+            plt.xlabel("Epoch #")
+            plt.ylabel("Loss/Accuracy")
+            plt.legend()
+            plt.savefig('../output/Epoch-{}.png'.format(epoch))
+            plt.close()
         return
 
     def on_batch_begin(self, batch, logs={}):
