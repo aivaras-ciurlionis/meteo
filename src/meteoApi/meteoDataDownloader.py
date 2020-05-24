@@ -14,7 +14,11 @@ class MeteoDataDownloader:
 
     @staticmethod
     def get_newest_available_time_from_meteo():
-        r = requests.get('http://www.meteo.lt/mapsfree?SERVICE=WMS&REQUEST=GetCapabilities')
+        r = requests.get('http://www.meteo.lt/mapsfree?SERVICE=WMS&REQUEST=GetCapabilities', headers={
+          'User-Agent': "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36",
+          'Host': "www.meteo.lt",
+          'Cookie': "Cookie: GUEST_LANGUAGE_ID=lt_LT; COOKIE_SUPPORT=true; _ga=GA1.2.1171208369.1527599128; JSESSIONID=49AB0D1410388A27A6E5A620628DB6D0; _gid=GA1.2.9622810.1590303177; _gat=1; LFR_SESSION_STATE_20158=1590312230006"
+        })
         data = xmltodict.parse(r.content)
         x = data['WMS_Capabilities']['Capability']['Layer']['Layer']['Layer']
         radar_layer = None

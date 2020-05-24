@@ -15,11 +15,6 @@ class AE(BaseAlgorithm):
     def reload(self, file='/app/src/savedModels/ae_3rand_1elev_32_p2_64_p2_128_u2_64_u2_16_3_3'):
         self.model = self.load_ml_model(file)
 
-    @staticmethod
-    def remove_rain_enhancement(p):
-        p = round(p)
-        return p * 16
-
     def predict(self, source_images, count):
         print('Predict ', self.name)
         converted_images = PixelsRainStrengthConverter.convert_loaded(source_images[-4:])
@@ -33,9 +28,8 @@ class AE(BaseAlgorithm):
             forecast = self.model.predict(temp_expanded)
             window[:-1] = window[1:]
             window[-1] = np.copy(forecast)
-            r = np.array(list(map(AE.remove_rain_enhancement, forecast.flatten())))
             img = Image.new('L', (self.size, self.size))
-            img.putdata(r)
+            img.putdata(forecast.flatten())
             resized = img.resize((128, 128), Image.BILINEAR)
             results.append(resized)
         return results

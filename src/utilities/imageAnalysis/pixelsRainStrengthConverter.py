@@ -1,7 +1,7 @@
 import numpy
 from PIL import Image
 from src.utilities.imageAnalysis.pixelToRainStrengthConverter import PixelToRainStrengthConverter
-
+import numpy as np
 
 class PixelsRainStrengthConverter:
 
@@ -49,6 +49,7 @@ class PixelsRainStrengthConverter:
         converter = PixelToRainStrengthConverter()
         strength_list = image.getdata()
         strength_list = list(map(lambda s: converter.convert_to_gray(s), strength_list))
+        print('dm', np.max(strength_list))
         converted_image = Image.new('L', image.size)
         converted_image.putdata(strength_list)
         image.close()
@@ -58,7 +59,8 @@ class PixelsRainStrengthConverter:
     def convert_gray_strength_to_source(image):
         converter = PixelToRainStrengthConverter()
         data = image.copy().getdata()
-        strength_list = list(map(lambda p: int(p/16), data))
+
+        strength_list = list(map(lambda p: round(p/16), data))
         pixels = list(map(lambda s: converter.convert_to_pixel(s), strength_list))
         converted_image = Image.new('RGBA', image.size)
         converted_image.putdata(pixels)
@@ -77,16 +79,10 @@ class PixelsRainStrengthConverter:
         return image.getpixel(point) / 255
 
     @staticmethod
-    def enhance_rain(p):
-        p = round(p / 16)
-        return p
-
-    @staticmethod
     def convert_loaded(images):
         data = []
         for image in images:
             image_data = image.getdata()
-            image_data = list(map(PixelsRainStrengthConverter.enhance_rain, image_data))
             categories = numpy.asarray(image_data)
             categories = numpy.reshape(categories, image.size)
             data.append(categories)

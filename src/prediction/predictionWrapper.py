@@ -39,7 +39,7 @@ class PredictionWrapper:
         result = None
         print('loading radar data')
         if date is None:
-            result = meteo.set_base_dir('meteo-out').set_images_count(10).load_radar_data()
+            result = meteo.set_base_dir('meteo-out').set_images_count(4).load_radar_data()
             source_time = result['source_time']
         print('starting prediction')
         r = prediction \

@@ -1,5 +1,5 @@
 import os
-
+import numpy as np
 import arrow
 
 from src.utilities.fileProcessing.ImagePreprocessor import ImagePreprocessor
@@ -69,6 +69,8 @@ class ImagesPrediction:
         saved_names = []
         if not os.path.exists(self.output_dir):
             os.makedirs(self.output_dir)
+        if self.source_date is None:
+            self.source_date = 'TEST_DATE'
         for index, image in enumerate(images):
             filename = prefix + '_' + self.source_date + '_' + str((index + 1) * 15) + 'm_' + '.png'
             src = os.path.join(self.output_dir, filename)
@@ -79,6 +81,7 @@ class ImagesPrediction:
 
     def predict(self):
         source_images = self.load_source_images()
+        print('imgmx', np.max(source_images[-1]))
         results = []
         for index, algorithm in enumerate(self.algorithms):
             generated_images = algorithm.predict(source_images, self.prediction_count)

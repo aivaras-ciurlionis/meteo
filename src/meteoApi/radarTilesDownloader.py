@@ -5,7 +5,9 @@ import shutil
 from src.meteoApi.imagesConcater import ImagesConcater
 import os
 import urllib.request
-
+import shutil
+import requests
+import time as tm
 
 class RadarTilesDownloader:
     baseDir = ''
@@ -35,8 +37,19 @@ class RadarTilesDownloader:
             "&TIMESTAMP=0" +\
             "&time="+formatted +\
             "Z&DIM_="
+        print(url)
 
-        urllib.request.urlretrieve(url, result)
+        response = requests.get(url, stream=True, headers={
+          'User-Agent': "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36",
+          'Host': "www.meteo.lt",
+          'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
+          'Accept-Encoding': 'gzip, deflate',
+          'Connection': 'keep-alive',
+          'Referer': 'http://www.meteo.lt/lt/radaru-informacija'
+        })
+        with open(result, 'wb') as out_file:
+            shutil.copyfileobj(response.raw, out_file)
+        del response
 
     def download_tiles(self, time):
         os.makedirs(self.workingDir, exist_ok=True)

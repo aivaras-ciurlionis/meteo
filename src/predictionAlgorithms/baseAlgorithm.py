@@ -3,6 +3,7 @@ from keras.models import model_from_json
 
 IMAGES_PER_EXAMPLE = 4
 
+
 class BaseAlgorithm:
     name = 'Base'
     step = 1

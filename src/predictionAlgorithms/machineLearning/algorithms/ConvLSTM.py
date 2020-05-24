@@ -21,6 +21,7 @@ class ConvLstm(BaseAlgorithm):
 
     def __init__(self, file='/app/src/savedModels/convLSTM_96_p2_CNN_64_u2_3_3'):
         self.model = self.load_ml_model(file)
+        # self.model = None
 
     def reload(self, file='/app/src/savedModels/convLSTM_96_p2_CNN_64_u2_3_3'):
         self.model = self.load_ml_model(file)
@@ -43,9 +44,8 @@ class ConvLstm(BaseAlgorithm):
             forecast = self.model.predict(temp_expanded)
             window[:-1] = window[1:]
             window[-1] = np.copy(forecast)
-            r = np.array(list(map(ConvLstm.remove_rain_enhancement, forecast.flatten())))
             img = Image.new('L', (self.size, self.size))
-            img.putdata(r)
+            img.putdata(forecast.flatten())
             resized = img.resize((128, 128), Image.BILINEAR)
             results.append(resized)
         return results
