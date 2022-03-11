@@ -5,7 +5,7 @@ requests
 xmltodict
 numpy
 Flask==0.12
-Pillow==3.1.2
+Pillow==9.0.1
 tensorflow
 keras
 arrow==0.12.0
